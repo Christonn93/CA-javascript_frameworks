@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 // Importing MUI components
-import { Toolbar, CssBaseline, Button, Tooltip, IconButton, useMediaQuery, useTheme, Box, Grid, Switch, FormControlLabel } from "@mui/material";
+import { Toolbar, CssBaseline, Button, Tooltip, IconButton, useMediaQuery, useTheme, Box, Grid } from "@mui/material";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 
 // Importing components
 import CartIcon from "../../../assets/CartIcon";
@@ -21,7 +23,7 @@ const CompanyLogo = styled.img`
  *
  * @returns page navigation
  */
-const Navbar = (props) => {
+const Navbar = () => {
  const device = useTheme();
  const isMobile = useMediaQuery(device.breakpoints.down("md"));
 
@@ -50,6 +52,7 @@ const Navbar = (props) => {
           <Button variant="text">Contact</Button>
          </Tooltip>
         </Link>
+
         <Link to="/cart">
          <Tooltip title="Your cart">
           <IconButton color="success">
@@ -57,7 +60,9 @@ const Navbar = (props) => {
           </IconButton>
          </Tooltip>
         </Link>
-        <FormControlLabel value="bottom" control={<Switch color="primary" size="small" />} label="Light/Dark" labelPlacement="bottom" />
+        <IconButton sx={{ ml: 1 }} color="inherit">
+         {device.palette.mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
+        </IconButton>
        </>
       )}
      </Grid>

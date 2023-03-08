@@ -1,17 +1,25 @@
-import { GlobalContext } from "./style/theme/GlobalContext";
+import { createTheme } from "@mui/material/styles";
 
-const currentTheme = useContext(GlobalContext);
+export default function ToggleColorMode() {
+ const [mode, setMode] = React.useState("light");
+ const colorMode = React.useMemo(
+  () => ({
+   toggleColorMode: () => {
+    setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+   },
+  }),
+  []
+ );
 
-let theme;
-switch (currentTheme.theme) {
-  case "dark":
-    theme = DarkTheme;
-    break;
-  case "light":
-    theme = LightTheme;
-    break;
-  default:
-    theme = LightTheme;
+ const theme = React.useMemo(
+  () =>
+   createTheme({
+    palette: {
+     mode,
+    },
+   }),
+  [mode]
+ );
+
+ return colorMode && theme;
 }
-
-// https://dev.to/holdmypotion/react-theme-switcher-5d2a
