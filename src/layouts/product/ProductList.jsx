@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 
 // Importing mui items
-import { Box, Container, FormControl, Grid, TextField } from "@mui/material";
+import { Box, Container, FormControl, Grid, TextField, Autocomplete } from "@mui/material";
 
 // Importing components
 import ProductCard from "../../components/card/SingleCard";
@@ -37,17 +37,28 @@ const ProductList = () => {
   return <ErrorResponse severity="error" title="Oh NO! Map error" content="Obs. We could not load your data. Please try again later" />;
  }
 
+ let productItems;
+
  return (
   <Container fullWidth align="center">
    <form onSubmit={(e) => e.preventDefault()}>
     <FormControl>
-     <TextField fullWidth id="outlined-controlled" label="Search products" onChange={(e) => setSearch(e.target.value)} />
+     <Autocomplete
+      disablePortal
+      id="seachBar"
+      options={data.map((e) => {
+       return (productItems = { label: e.title });
+      })}
+      sx={{ width: 300 }}
+      renderInput={(params) => <TextField {...params} fullWidth id="outlined-controlled" label="Search products" onChange={(e) => setSearch(e.target.value)} />}
+     />
     </FormControl>
    </form>
    <Box
     sx={{
      flexGrow: 1,
-     padding: 2,
+     p: 2,
+     mt: 3,
     }}
    >
     <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 2, sm: 8, md: 12 }} rowSpacing={3}>
