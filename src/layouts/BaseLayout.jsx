@@ -19,7 +19,10 @@ const Layout = () => {
  return (
   <PageLayout>
    <PageHeader />
-   <Container>
+   <Container sx={{
+    mt: 2,
+    mb: 2
+   }}>
     <Outlet />
    </Container>
    <Footer />

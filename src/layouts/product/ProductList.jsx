@@ -38,7 +38,7 @@ const ProductList = () => {
  }
 
  return (
-  <Container>
+  <Container fullWidth align="center">
    <form onSubmit={(e) => e.preventDefault()}>
     <FormControl>
      <TextField fullWidth id="outlined-controlled" label="Search products" onChange={(e) => setSearch(e.target.value)} />
