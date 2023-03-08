@@ -3,7 +3,7 @@ import React from "react";
 
 // Importing MUI
 import { Box, Container } from "@mui/system";
-import { Button, FormControl, TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 
 const Contact = () => {
  return (

@@ -14,6 +14,7 @@ import ErrorResponse from "../../utils/ErrorResponse";
 
 // Importing api hook
 import ApiHook from "../../hooks/ApiHooks";
+import SearchBar from "../../components/search/Search";
 
 // Render function
 const ProductList = () => {
@@ -37,18 +38,22 @@ const ProductList = () => {
   return <ErrorResponse severity="error" title="Oh NO! Map error" content="Obs. We could not load your data. Please try again later" />;
  }
 
- let productItems;
+ const option = data.map((e) => {
+  let productItems = { label: e.title }
+  return (productItems);
+ });
 
  return (
   <Container fullWidth align="center">
+   <p>Component</p>
+   <SearchBar data={data} search={search} />
+   <p>Hardcoded</p>
    <form onSubmit={(e) => e.preventDefault()}>
     <FormControl>
      <Autocomplete
       disablePortal
-      id="seachBar"
-      options={data.map((e) => {
-       return (productItems = { label: e.title });
-      })}
+      id="searchBar"
+      options={option}
       sx={{ width: 300 }}
       renderInput={(params) => <TextField {...params} fullWidth id="outlined-controlled" label="Search products" onChange={(e) => setSearch(e.target.value)} />}
      />

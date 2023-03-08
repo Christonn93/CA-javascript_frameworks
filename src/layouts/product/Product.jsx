@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 // Importing MUI
-import { Box, Grid, Button, ButtonGroup, Container, Typography, Paper } from "@mui/material";
+import { Box, Grid, Button, ButtonGroup, Container, Paper } from "@mui/material";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
@@ -51,33 +51,34 @@ const ProductLayout = () => {
  const review = DisplayReview(data);
 
  return (
-  <Box>
-   <Container>
-    <br />
+  <>
+   <Container sx={{
+    mb: 3
+   }}>
     <BasicBreadcrumbs name={data.title} />
    </Container>
-   <Box sx={{ flexGrow: 1 }} m={5}>
+   <Box sx={{ flexGrow: 1 }}>
     <Container>
      <Paper elevation={5} square={false}>
       <Box p={2}>
        <Grid container spacing={2} columns={{ xs: 1, md: 10, lg: 12 }} order={{ xs: 1, sm: 2 }} justifyContent={"center"}>
         <Grid item xs={12} order={{ xs: 1, md: 1, lg: 1 }}>
-         <Typography variant="h2">{data.title}</Typography>
+         <h2>{data.title}</h2>
          <Line />
-         <Typography variant="subtitle2">Category: {data.tags.join(", ")}</Typography>
+         <p>Category: {data.tags.join(", ")}</p>
         </Grid>
         <Grid item xs={6} order={{ xs: 3, md: 3, lg: 2 }}>
          <Grid container direction="column" spacing={2}>
           <Grid item marginBottom={3}>
-           <Typography variant="h5" marginBottom={2}>
+           <h4>
             Product description:
-           </Typography>
+           </h4>
            <Line />
-           <Typography variant="body2">{data.description}</Typography>
-           <Typography variant="body2" marginTop={2}>
+           <p>{data.description}</p>
+           <p>
             Lorem ipsum dolor sit amet, nec ne delectus signiferumque. Ei pri porro singulis, no quot saperet facilisis sed, no instructior intellegebat usu. Id mei ullum graece oportere, vis at
             expetendis signiferumque, sint volumus mel cu. Quodsi senserit aliquando ne pri, vim gubergren percipitur ei. (added this to fill out the page a bit more so the design would work good)
-           </Typography>
+           </p>
           </Grid>
           <Grid container alignItems="center" justifyContent={"space-between"} spacing={1} marginBottom={2} p={2} border>
            <Grid item>{price}</Grid>
@@ -106,7 +107,7 @@ const ProductLayout = () => {
         <Grid item xs={12} order={{ xs: 4, md: 4 }}>
          <Line />
          <Grid item xs={12}>
-          <Typography variant="h4">Reviews</Typography>
+          <h3>Reviews</h3>
          </Grid>
          <Grid item xs={12}>
           {review}
@@ -117,7 +118,7 @@ const ProductLayout = () => {
      </Paper>
     </Container>
    </Box>
-  </Box>
+  </>
  );
 };
 
