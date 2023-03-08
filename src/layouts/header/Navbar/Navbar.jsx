@@ -1,5 +1,5 @@
 // Importing react
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -23,18 +23,7 @@ const CompanyLogo = styled.img`
  */
 const Navbar = (props) => {
  const device = useTheme();
- const [theme, setTheme] = useState("light");
  const isMobile = useMediaQuery(device.breakpoints.down("md"));
-
- const label = { inputProps: { "aria-label": "Switch A" } };
-
- const toggleTheme = () => {
-  if (theme === "light") {
-   setTheme("dark");
-  } else {
-   setTheme("light");
-  }
- };
 
  return (
   <Box bgcolor={"lightskyblue"} width={"100%"}>

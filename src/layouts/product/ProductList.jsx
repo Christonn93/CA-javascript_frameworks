@@ -50,7 +50,7 @@ const ProductList = () => {
      padding: 2,
     }}
    >
-    <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} rowSpacing={3}>
+    <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 2, sm: 8, md: 12 }} rowSpacing={3}>
      {data
       .filter((product) => {
        return search.toLowerCase() === "No product found" ? product : product.title.toLowerCase().includes(search);
