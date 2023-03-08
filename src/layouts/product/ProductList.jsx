@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 
 // Importing mui items
-import { Box, Grid } from "@mui/material";
+import { Box, Container, FormControl, Grid, TextField } from "@mui/material";
 
 // Importing components
 import ProductCard from "../../components/card/SingleCard";
@@ -38,9 +38,11 @@ const ProductList = () => {
  }
 
  return (
-  <>
-   <form>
-    <input type={"text"} id="searchInput" onChange={(e) => setSearch(e.target.value)} placeholder="Search products" />
+  <Container>
+   <form onSubmit={(e) => e.preventDefault()}>
+    <FormControl>
+     <TextField fullWidth id="outlined-controlled" label="Search products" onChange={(e) => setSearch(e.target.value)} />
+    </FormControl>
    </form>
    <Box
     sx={{
@@ -51,7 +53,7 @@ const ProductList = () => {
     <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} rowSpacing={3}>
      {data
       .filter((product) => {
-       return search.toLowerCase() === "" ? product : product.title.toLowerCase().includes(search);
+       return search.toLowerCase() === "No product found" ? product : product.title.toLowerCase().includes(search);
       })
       .map((product) => (
        <Grid item xs={2} sm={4} md={4} key={product.id}>
@@ -69,7 +71,7 @@ const ProductList = () => {
       ))}
     </Grid>
    </Box>
-  </>
+  </Container>
  );
 };
 
