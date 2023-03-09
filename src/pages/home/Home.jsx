@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 // Importing context
-import HomeContext from "../../context/HomePage";
+import HomeContext from "../../content/HomePage";
 
 // Importing Layouts
 import ProductList from "../../layouts/product/ProductList";

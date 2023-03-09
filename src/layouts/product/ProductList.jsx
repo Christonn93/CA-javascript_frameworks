@@ -39,8 +39,8 @@ const ProductList = () => {
  }
 
  const option = data.map((e) => {
-  let productItems = { label: e.title }
-  return (productItems);
+  let productItems = { label: e.title };
+  return productItems;
  });
 
  return (
@@ -55,7 +55,8 @@ const ProductList = () => {
       id="searchBar"
       options={option}
       sx={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} fullWidth id="outlined-controlled" label="Search products" onChange={(e) => setSearch(e.target.value)} />}
+      value={search}
+      renderInput={(params) => <TextField {...params} fullWidth id="outlined-controlled" label="Search products" onChange={(e) => setSearch(e.target.value.toLowerCase())} />}
      />
     </FormControl>
    </form>
