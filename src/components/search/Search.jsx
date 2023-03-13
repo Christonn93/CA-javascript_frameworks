@@ -1,21 +1,28 @@
 // Importing react
 import React from "react";
-import { useState } from "react";
 
 // Importing mui items
 import { FormControl, TextField, Autocomplete } from "@mui/material";
 
-const SearchBar = (props) => {
- let [search, setSearch] = useState("");
 
- search = props.search;
+/**
+ * Search component
+ * This will filter and render out the search input made from the user.
+ * 
+ * @param {*} 
+ * @returns User search results will display
+ */
+const SearchBar = ({ searchInput, setSearchInput, data }) => {
+ function onSearch(e) {
+  setSearchInput(e.currentTarget.value);
+ }
 
- const option = props.data
+ const option = data
   .filter((product) => {
-   return search.toLowerCase() === "No product found" ? product : product.title.toLowerCase().includes(search);
+   return searchInput.toLowerCase(product.title.toLowerCase()) === "No product found" ? product : product.title.toLowerCase().includes(searchInput);
   })
   .map((e) => {
-   let productItems = { label: e.title };
+   let productItems = { label: e.title.toLowerCase() };
    return productItems;
   });
 
@@ -27,7 +34,8 @@ const SearchBar = (props) => {
      id="searchBar"
      options={option}
      sx={{ width: 300 }}
-     renderInput={(params) => <TextField {...params} fullWidth id="outlined-controlled" label="Search products" onChange={(e) => setSearch(e.target.value)} />}
+     value={searchInput}
+     renderInput={(params) => <TextField {...params} fullWidth id="outlined-controlled" label="Search products" onChange={onSearch} />}
     />
    </FormControl>
   </form>

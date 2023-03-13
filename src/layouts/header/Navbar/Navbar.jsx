@@ -55,7 +55,7 @@ const Navbar = () => {
 
         <Link to="/cart">
          <Tooltip title="Your cart">
-          <IconButton color="success">
+          <IconButton>
            <CartIcon />
           </IconButton>
          </Tooltip>

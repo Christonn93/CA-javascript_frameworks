@@ -17,13 +17,11 @@ const Products = () => {
  }
 
  // Display error if something wrong with Map
- if (!data.map) {
+ if (data.map) {
   return <ErrorResponse severity="error" title="Oh NO! Map error" content="Obs. We could not load your data. Please try again later" />;
  }
 
- const productsData = data;
-
- return productsData;
+ return;
 };
 
 export default Products;

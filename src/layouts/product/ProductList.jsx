@@ -3,43 +3,35 @@ import React from "react";
 import { useState } from "react";
 
 // Importing mui items
-import { Box, Container, FormControl, Grid, TextField, Autocomplete } from "@mui/material";
+import { Box, Container, Grid, Stack, Button } from "@mui/material";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
 
 // Importing components
 import ProductCard from "../../components/card/SingleCard";
 import SearchBar from "../../components/search/Search";
 
+// Importing functions
+import ToggleFilter from "../../components/filter/ToggleFilter";
+
 // Importing fetch function
-import Products from "../../hooks/ProductsFetch";
+import ApiHook from "../../hooks/ApiHooks";
 
 // Render function
 const ProductList = () => {
  const [search, setSearch] = useState("");
-
- const data = Products();
-
- const option = data.map((e) => {
-  let productItems = { label: e.title };
-  return productItems;
- });
+ const { data } = ApiHook("https://api.noroff.dev/api/v1/online-shop");
 
  return (
-  <Container fullWidth align="center">
-   <p>Component</p>
-   <SearchBar data={data} search={search} />
-   <p>Hardcoded</p>
-   <form onSubmit={(e) => e.preventDefault()}>
-    <FormControl>
-     <Autocomplete
-      disablePortal
-      id="searchBar"
-      options={option}
-      sx={{ width: 300 }}
-      value={search}
-      renderInput={(params) => <TextField {...params} fullWidth id="outlined-controlled" label="Search products" onChange={(e) => setSearch(e.target.value.toLowerCase())} />}
-     />
-    </FormControl>
-   </form>
+  <Container align="center">
+  <Box>
+  <Stack direction="row" spacing={2} justifyContent={"center"}>
+    <SearchBar searchInput={search} setSearchInput={setSearch} data={data} />
+    <Button onClick={(e) => ToggleFilter(e)}>
+    <FilterAltIcon />
+   </Button>
+   </Stack>
+  </Box>
+
    <Box
     sx={{
      flexGrow: 1,
@@ -47,7 +39,7 @@ const ProductList = () => {
      mt: 3,
     }}
    >
-    <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 2, sm: 8, md: 12 }} rowSpacing={3}>
+    <Grid container='true' spacing={{ xs: 2, md: 4 }} columns={{ xs: 2, sm: 8, md: 12 }} rowSpacing={3}>
      {data
       .filter((product) => {
        return search.toLowerCase(product.title.toLowerCase()) === "No product found" ? product : product.title.toLowerCase().includes(search);
