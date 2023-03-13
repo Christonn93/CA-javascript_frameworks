@@ -70,7 +70,7 @@ const ProductList = () => {
     <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 2, sm: 8, md: 12 }} rowSpacing={3}>
      {data
       .filter((product) => {
-       return search.toLowerCase() === "No product found" ? product : product.title.toLowerCase().includes(search);
+       return search.toLowerCase(product.title.toLowerCase()) === "No product found" ? product : product.title.toLowerCase().includes(search);
       })
       .map((product) => (
        <Grid item xs={2} sm={4} md={4} key={product.id}>
