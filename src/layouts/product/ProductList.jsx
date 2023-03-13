@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 
 // Importing mui items
-import { Box, Container, Grid, Stack, Button, Divider } from "@mui/material";
+import { Box, Container, Grid, Stack, Button, Divider, IconButton } from "@mui/material";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 
 // Importing components
@@ -26,9 +26,9 @@ const ProductList = () => {
    <Box>
     <Stack direction="row" spacing={2} justifyContent={"center"}>
      <SearchBar searchInput={search} setSearchInput={setSearch} data={data} />
-     <Button onClick={(e) => ToggleFilter(e)}>
+     <IconButton onClick={(e) => ToggleFilter(e)} color="warning">
       <FilterAltIcon />
-     </Button>
+     </IconButton>
     </Stack>
     <Box mt={2}>
      <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={2} justifyContent={"center"}>
