@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 
 // Importing mui items
-import { Box, Container, Grid, Stack, Button } from "@mui/material";
+import { Box, Container, Grid, Stack, Button, Divider } from "@mui/material";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 
 // Importing components
@@ -23,14 +23,28 @@ const ProductList = () => {
 
  return (
   <Container align="center">
-  <Box>
-  <Stack direction="row" spacing={2} justifyContent={"center"}>
-    <SearchBar searchInput={search} setSearchInput={setSearch} data={data} />
-    <Button onClick={(e) => ToggleFilter(e)}>
-    <FilterAltIcon />
-   </Button>
-   </Stack>
-  </Box>
+   <Box>
+    <Stack direction="row" spacing={2} justifyContent={"center"}>
+     <SearchBar searchInput={search} setSearchInput={setSearch} data={data} />
+     <Button onClick={(e) => ToggleFilter(e)}>
+      <FilterAltIcon />
+     </Button>
+    </Stack>
+    <Box mt={2}>
+     <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={2} justifyContent={"center"}>
+      <Button>Sale</Button>
+      <Button>Price low - high</Button>
+     </Stack>
+      <h3>Categories</h3>
+     <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={2} justifyContent={"center"}>
+      <Button>Computer</Button>
+      <Button>Fashion</Button>
+      <Button>Beauty</Button>
+      <Button>Toys</Button>
+      <Button>Electronics</Button>
+     </Stack>
+    </Box>
+   </Box>
 
    <Box
     sx={{
@@ -39,7 +53,7 @@ const ProductList = () => {
      mt: 3,
     }}
    >
-    <Grid container='true' spacing={{ xs: 2, md: 4 }} columns={{ xs: 2, sm: 8, md: 12 }} rowSpacing={3}>
+    <Grid container="true" spacing={{ xs: 2, md: 4 }} columns={{ xs: 2, sm: 8, md: 12 }} rowSpacing={3}>
      {data
       .filter((product) => {
        return search.toLowerCase(product.title.toLowerCase()) === "No product found" ? product : product.title.toLowerCase().includes(search);

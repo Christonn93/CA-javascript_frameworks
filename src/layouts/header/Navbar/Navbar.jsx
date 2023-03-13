@@ -55,9 +55,7 @@ const Navbar = () => {
 
         <Link to="/cart">
          <Tooltip title="Your cart">
-          <IconButton>
            <CartIcon />
-          </IconButton>
          </Tooltip>
         </Link>
         <IconButton sx={{ ml: 1 }} color="inherit">

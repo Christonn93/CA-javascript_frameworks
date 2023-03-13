@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 // Importing mui items
 import { Chip, Box } from "@mui/material";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import Discount from "./Discount";
 
 const Small = styled.p`
@@ -31,12 +30,9 @@ const PriceDisplay = (data) => {
     </span>
    </Box>
    <Box>
-    {data.discountedPrice}
-    <AttachMoneyIcon fontSize="20px" />
-    <del>
-     {data.price}
-     <AttachMoneyIcon fontSize="20px" />
-    </del>
+    <p>
+     <strong>{data.discountedPrice} NOK</strong> <del>{data.price} NOK</del>
+    </p>
    </Box>
    <Box>
     <Small>
@@ -50,8 +46,7 @@ const PriceDisplay = (data) => {
  const noDiscountProduct = (
   <Container>
    <Box>
-    {data.price}
-    <AttachMoneyIcon fontSize="20px" />
+    <p><strong>{data.price} NOK</strong></p>
    </Box>
    <Small>
     <i>(Additional tax may apply on checkout)</i>
