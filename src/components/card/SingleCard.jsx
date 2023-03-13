@@ -57,19 +57,7 @@ const ItemImage = styled.div`
  * @returns
  */
 const ProductCard = (props) => {
- const dispatch = useDispatch();
  const price = PriceDisplay(props.data);
-
- const handleAddToCart = () => {
-  dispatch(
-   addToCart({
-    id: props.id,
-    title: props.title,
-    price: props.price,
-    image: props.image,
-   })
-  );
- };
 
  if (props.discountPrice >= props.price) {
   return (
@@ -94,7 +82,7 @@ const ProductCard = (props) => {
         </Tooltip>
        </Link>
        <Tooltip title="Add to cart">
-        <IconButton color="success">
+        <IconButton color="primary">
          <AddShoppingCartOutlinedIcon />
         </IconButton>
        </Tooltip>
@@ -127,7 +115,7 @@ const ProductCard = (props) => {
         </Tooltip>
        </Link>
        <Tooltip title="Add to cart">
-        <IconButton color="primary" onClick={handleAddToCart}>
+        <IconButton color="primary">
          <AddShoppingCartOutlinedIcon />
         </IconButton>
        </Tooltip>

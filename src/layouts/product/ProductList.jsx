@@ -7,36 +7,16 @@ import { Box, Container, FormControl, Grid, TextField, Autocomplete } from "@mui
 
 // Importing components
 import ProductCard from "../../components/card/SingleCard";
-
-// Importing utils
-import LoadingAnimation from "../../utils/LoadingAnimation";
-import ErrorResponse from "../../utils/ErrorResponse";
-
-// Importing api hook
-import ApiHook from "../../hooks/ApiHooks";
 import SearchBar from "../../components/search/Search";
+
+// Importing fetch function
+import Products from "../../hooks/ProductsFetch";
 
 // Render function
 const ProductList = () => {
  const [search, setSearch] = useState("");
 
- // Fetching the data
- const { data, isLoading, isError } = ApiHook("https://api.noroff.dev/api/v1/online-shop");
-
- // Displaying loading div
- if (isLoading) {
-  return <LoadingAnimation />;
- }
-
- // Displaying error for the user if something is wrong
- if (isError) {
-  return <ErrorResponse severity="error" title="Oh NO!" content="Obs. We could not load your data. Please try again later" />;
- }
-
- // Display error if something wrong with Map
- if (!data.map) {
-  return <ErrorResponse severity="error" title="Oh NO! Map error" content="Obs. We could not load your data. Please try again later" />;
- }
+ const data = Products();
 
  const option = data.map((e) => {
   let productItems = { label: e.title };
