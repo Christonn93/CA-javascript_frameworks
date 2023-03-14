@@ -8,17 +8,18 @@ const ProductFilter = ({ setFilter, filterOption }) => {
  const tag = filterOption.flatMap((obj) => obj.tags);
  const filterArray = [...new Set(tag)];
 
- const option = filterArray.sort().map((e) => <Button>{e}</Button>);
-
  return setOpen(
     <Paper variant="elevation" elevation={2}>
-     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-      {option.map((e, _) => (
-       <Grid item xs={2} sm={4} md={4} key={_}>
-        {e}
-       </Grid>
-      ))}
-     </Grid>
+ <Box mt={2}>
+     <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={2} justifyContent={"center"}>
+      <Button>Sale</Button>
+      <Button>Price low - high</Button>
+     </Stack>
+      <h3>Categories</h3>
+     <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={2} justifyContent={"center"}>
+      {filterArray.sort().map((e) => <Button>{e}</Button>)}
+     </Stack>
+    </Box>
     </Paper>
    );
 };
