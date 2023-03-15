@@ -61,7 +61,7 @@ export function CartProvider({ children }) {
   let subTotal;
   data.map(item => {
    const productData = data;
-   subTotal += productData.discountedPrice * item.quantity;
+  return subTotal += productData.discountedPrice * item.quantity;
   });
   return subTotal;
  }
