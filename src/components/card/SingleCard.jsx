@@ -1,14 +1,16 @@
 // Importing react
-import * as React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+// Importing cart context
+import { CartContext } from "../cart/cartContext";
+
 // Importing MUI
 import { experimentalStyled as style } from "@mui/material/styles";
-import { IconButton, Tooltip, Button, ButtonGroup, Paper } from "@mui/material";
+import { IconButton, Tooltip, Button, ButtonGroup, Paper, Box, Badge } from "@mui/material";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 import PriceDisplay from "../../utils/PriceDisplay";
-import { Box } from "@mui/system";
 
 // Styling components
 const Item = style(Paper)(({ theme }) => ({
@@ -57,6 +59,11 @@ const ItemImage = styled.div`
  * @returns
  */
 const ProductCard = (props) => {
+ // Setting up the cart function's
+ const cart = useContext(CartContext);
+ const productAmount = cart.getProductAmount(props.id);
+
+ // Displaying the price component
  const price = PriceDisplay(props.data);
 
  if (props.discountPrice >= props.price) {
@@ -81,11 +88,21 @@ const ProductCard = (props) => {
          <Button>View product</Button>
         </Tooltip>
        </Link>
-       <Tooltip title="Add to cart">
-        <IconButton color="primary">
-         <AddShoppingCartOutlinedIcon />
-        </IconButton>
-       </Tooltip>
+       {productAmount > 0 ? (
+        <Tooltip title="Add to cart">
+         <IconButton color="primary" onClick={() => cart.addToCart(props.id)}>
+          <Badge badgeContent={productAmount} color="primary">
+           <AddShoppingCartOutlinedIcon />
+          </Badge>
+         </IconButton>
+        </Tooltip>
+       ) : (
+        <Tooltip title="Add to cart">
+         <IconButton color="primary" onClick={() => cart.addToCart(props.id)}>
+          <AddShoppingCartOutlinedIcon />
+         </IconButton>
+        </Tooltip>
+       )}
       </ButtonGroup>
      </Box>
     </Content>
@@ -114,11 +131,21 @@ const ProductCard = (props) => {
          <Button>View product</Button>
         </Tooltip>
        </Link>
-       <Tooltip title="Add to cart">
-        <IconButton color="primary">
-         <AddShoppingCartOutlinedIcon />
-        </IconButton>
-       </Tooltip>
+       {productAmount > 0 ? (
+        <Tooltip title="Add to cart">
+         <IconButton color="primary" onClick={() => cart.addToCart(props.id)}>
+          <Badge badgeContent={productAmount} color="primary">
+           <AddShoppingCartOutlinedIcon />
+          </Badge>
+         </IconButton>
+        </Tooltip>
+       ) : (
+        <Tooltip title="Add to cart">
+         <IconButton color="primary" onClick={() => cart.addToCart(props.id)}>
+          <AddShoppingCartOutlinedIcon />
+         </IconButton>
+        </Tooltip>
+       )}
       </ButtonGroup>
      </Box>
     </Content>
