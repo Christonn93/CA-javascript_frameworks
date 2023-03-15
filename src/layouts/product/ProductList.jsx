@@ -1,9 +1,9 @@
 // Importing react
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+
 
 // Importing mui items
-import { Box, Container, Grid, Stack, Button, Divider, IconButton } from "@mui/material";
+import { Box, Container, Grid, Stack, IconButton } from "@mui/material";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 
 // Importing components
@@ -26,24 +26,10 @@ const ProductList = () => {
    <Box>
     <Stack direction="row" spacing={2} justifyContent={"center"}>
      <SearchBar searchInput={search} setSearchInput={setSearch} data={data} />
-     <IconButton onClick={(e) => ToggleFilter(e)} color="warning">
+     <IconButton onClick={(e) => ToggleFilter(e)} color="warning" disabled>
       <FilterAltIcon />
      </IconButton>
     </Stack>
-    <Box mt={2}>
-     <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={2} justifyContent={"center"}>
-      <Button>Sale</Button>
-      <Button>Price low - high</Button>
-     </Stack>
-      <h3>Categories</h3>
-     <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={2} justifyContent={"center"}>
-      <Button>Computer</Button>
-      <Button>Fashion</Button>
-      <Button>Beauty</Button>
-      <Button>Toys</Button>
-      <Button>Electronics</Button>
-     </Stack>
-    </Box>
    </Box>
 
    <Box
