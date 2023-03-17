@@ -35,7 +35,7 @@ const Navbar = () => {
  const cartTotal = cart.items.reduce((sum, product) => sum + product.quantity, 0);
 
  return (
-  <Box bgcolor={"lightskyblue"} width={"100%"}>
+  <Box width={"100%"}>
    <CssBaseline />
    <Toolbar>
     <Grid container justifyContent={"space-between"} alignItems={"center"}>

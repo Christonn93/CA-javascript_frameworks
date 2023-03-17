@@ -9,7 +9,7 @@ import Navbar from "../Navbar/Navbar";
 
 const PageHeader = () => {
  return (
-  <Box bgcolor={"lightskyblue"} width={"100%"}>
+  <Box width={"100%"}>
    <Container>
     <Navbar />
    </Container>
