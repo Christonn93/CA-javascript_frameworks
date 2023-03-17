@@ -9,12 +9,12 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 
 // Importing components
-import CartIcon from "../../../assets/CartIcon";
-import Logo from "../../../images/color-noBG.png";
+import CartIcon from "../../assets/CartIcon";
+import Logo from "../../assets/images/color-noBG.png";
 import DrawerComponent from "./Drawer";
 
 // Importing cart context
-import { CartContext } from "../../../components/cart/cartContext";
+import { CartContext } from "../../context/cartContext";
 
 // Styling company logo
 const CompanyLogo = styled.img`

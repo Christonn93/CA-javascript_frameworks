@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { Button, Tooltip, IconButton, Drawer, List, ListItem, ListItemText } from "@mui/material";
+import { Button, Tooltip, IconButton, Drawer, List, ListItem, ListItemText, Badge} from "@mui/material";
 import { Menu } from "@mui/icons-material";
 
-import CartIcon from "../../../assets/CartIcon";
+import CartIcon from "../../assets/CartIcon";
+
+// Importing cart context
+import { CartContext } from "../../context/cartContext";
 
 function DrawerComponent() {
  const [openDrawer, setOpenDrawer] = useState(false);
+ const cart = useContext(CartContext);
+
+ // Adding a new function to the CartContext
+ const cartTotal = cart.items.reduce((sum, product) => sum + product.quantity, 0);
+
  return (
   <>
    <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)} anchor="right">
@@ -34,9 +42,9 @@ function DrawerComponent() {
       <ListItemText>
        <Link to="/cart">
         <Tooltip title="Your cart">
-         <IconButton color="success">
+         <Badge badgeContent={cartTotal} color="primary">
           <CartIcon />
-         </IconButton>
+         </Badge>
         </Tooltip>
        </Link>
       </ListItemText>

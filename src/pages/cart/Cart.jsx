@@ -3,11 +3,13 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 // Importing MUI
-import { Container, Grid } from "@mui/material";
+import { Container, Stack } from "@mui/material";
+
+// Importing components
+import CartCard from "../../components/card/CartCard";
 
 // Importing cart context
-import { CartContext } from "../../components/cart/cartContext";
-import CartProduct from "../../components/cart/CartProduct";
+import { CartContext } from "../../context/cartContext";
 
 const Cart = () => {
  // Getting the cart context
@@ -22,20 +24,24 @@ const Cart = () => {
    {products > 0 ? (
     <Container>
      <h2>Your products</h2>
-     <Grid container spacing={1}>
+     <Stack spacing={2}>
       {cart.items.map((product, idx) => (
-       <CartProduct id={product.id} />
+       <CartCard id={product.id} />
       ))}
-     </Grid>
-     <h3>Total: {cart.getTotalPrice().toFixed(2)}</h3>
+     </Stack>
+     <h3>
+      Total:{" "}
+      {cart.items.map((product) => {
+       return cart.getTotalPrice(product.id).toFixed(1);
+      })}
+     </h3>
     </Container>
    ) : (
     <Container>
      <h2>Your cart is empty</h2>
+     <Link to="/">Browse our products here</Link>
     </Container>
    )}
-
-   <Link to="/checkout">checkout</Link>
   </Container>
  );
 };

@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import ApiHook from "../../hooks/ApiHooks";
+import ApiHook from "../api/ApiHooks";
 
 export const CartContext = createContext({
  items: [],
@@ -47,7 +47,12 @@ export function CartProvider({ children }) {
  function removeFromCart(id) {
   const quantity = getProductAmount(id);
 
-  if (quantity === 1) {deleteFromCart(id);} else {setProducts(products.map((product) => (product.id === id ? { ...product, quantity: product.quantity - 1 } : product))); }}
+  if (quantity === 1) {
+   deleteFromCart(id);
+  } else {
+   setProducts(products.map((product) => (product.id === id ? { ...product, quantity: product.quantity - 1 } : product)));
+  }
+ }
 
  function deleteFromCart(id) {
   setProducts((products) =>
@@ -58,10 +63,10 @@ export function CartProvider({ children }) {
  }
 
  function getTotalPrice() {
-  let subTotal;
-  data.map(item => {
-   const productData = data;
-  return subTotal += productData.discountedPrice * item.quantity;
+  let subTotal = 0;
+  data.map((item) => {
+   subTotal += (item.discountedPrice * item.quantity);
+   return subTotal;
   });
   return subTotal;
  }

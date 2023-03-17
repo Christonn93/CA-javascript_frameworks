@@ -5,7 +5,7 @@ import React from "react";
 import { Box, Container } from "@mui/material";
 
 // Importing components
-import Navbar from "./Navbar/Navbar";
+import Navbar from "../Navbar/Navbar";
 
 const PageHeader = () => {
  return (
