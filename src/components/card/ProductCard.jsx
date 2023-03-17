@@ -144,7 +144,7 @@ const NoDiscount = ({ product }) => (
  * @param {*} { product }
  * @returns UI if product is not added to cart
  */
-const AddToCart = ({ product, cart }) => (
+export const AddToCart = ({ product, cart }) => (
  <>
   <Tooltip title="Add to cart">
    <Button color="primary" onClick={() => cart.addToCart(product.id)} variant="contained">
@@ -160,7 +160,7 @@ const AddToCart = ({ product, cart }) => (
  * @param {*} { product }
  * @returns UI if product is Added To Cart
  */
-const AddedToCart = ({ product, productAmount, cart }) => (
+export const AddedToCart = ({ product, productAmount, cart }) => (
  <>
   <Tooltip title="Added to cart">
    <Badge badgeContent={productAmount} color="primary">
