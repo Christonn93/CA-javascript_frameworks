@@ -3,6 +3,7 @@ import React from "react";
 
 // Importing mui items
 import { FormControl, TextField, Autocomplete } from "@mui/material";
+import { Link } from "react-router-dom";
 
 /**
  * Search component
@@ -16,14 +17,16 @@ const SearchBar = ({ searchInput, setSearchInput, data }) => {
   setSearchInput(e.target.value);
  }
 
- const option = data
-  .filter((product) => {
-   return searchInput.toLowerCase(product.title.toLowerCase()) === "No product found" ? product : product.title.toLowerCase().includes(searchInput) || searchInput;
-  })
-  .map((e) => {
-   let productItems = { label: e.title.toLowerCase() };
-   return productItems;
-  });
+ const option = data.map((e) => {
+  let productItems = { label: e.title.toLowerCase(), id: e.id, price: e.discountedPrice };
+  return productItems;
+ });
+
+ const linkStyle = {
+  textDecoration: "none",
+  color: "black",
+  textTransform: "initial"
+ };
 
  return (
   <form onSubmit={(e) => e.preventDefault()}>
@@ -34,7 +37,16 @@ const SearchBar = ({ searchInput, setSearchInput, data }) => {
      options={option}
      sx={{ width: 300 }}
      value={searchInput}
-     renderInput={(params) => <TextField {...params} fullWidth id="outlined-controlled" label="Search products" onChange={onSearch} />}
+     renderOption={(props, option) => {
+      return (
+       <li {...props} key={option.id}>
+        <Link to={`/product/${option.id}`} style={linkStyle}>
+         {option.label}
+        </Link>
+       </li>
+      );
+     }}
+     renderInput={(params) => <TextField {...params} fullWidth id="outlined-controlled" label="Search products" onChange={onSearch} clearOnEscape />}
     />
    </FormControl>
   </form>

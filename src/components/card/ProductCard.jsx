@@ -8,6 +8,7 @@ import { CardActions, Card, CardContent, Typography, Button, Tooltip, Badge, Chi
 
 // Importing cart context
 import { CartContext } from "../../context/cartContext";
+import { useLocalStorage } from "../../js/localStorage/useLocalStorage";
 
 // Adding some custom style to elements
 
@@ -107,9 +108,7 @@ const NonSaleItem = ({ product }) => (
 const Discount = ({ product }) => (
  <>
   <Box>
-   <p>
-    <strong>{product.discountedPrice} NOK</strong> <del style={red}>{product.price} NOK</del>
-   </p>
+   <strong>{product.discountedPrice} NOK</strong> <del style={red}>{product.price} NOK</del>
   </Box>
   <Box>
    <small>
@@ -128,13 +127,13 @@ const Discount = ({ product }) => (
 const NoDiscount = ({ product }) => (
  <>
   <Box>
-   <p>
-    <strong>{product.price} NOK</strong>
-   </p>
+   <strong>{product.price} NOK</strong>
   </Box>
-  <small>
-   <i>(Additional tax may apply on checkout)</i>
-  </small>
+  <Box>
+   <small>
+    <i>(Additional tax may apply on checkout)</i>
+   </small>
+  </Box>
  </>
 );
 
@@ -144,15 +143,23 @@ const NoDiscount = ({ product }) => (
  * @param {*} { product }
  * @returns UI if product is not added to cart
  */
-export const AddToCart = ({ product, cart }) => (
- <>
-  <Tooltip title="Add to cart">
-   <Button color="primary" onClick={() => cart.addToCart(product.id)} variant="contained">
-    Add to cart
-   </Button>
-  </Tooltip>
- </>
-);
+export const AddToCart = ({ product, cart }) => {
+ const [data = product, setCart = cart.addToCart] = useLocalStorage("Cart", cart);
+ return (
+  <>
+   <Tooltip title="Add to cart">
+    <Button color="primary"      onClick={() => {
+       setCart(product.id);
+       cart.addToCart(product.id);
+      }}
+      variant="contained"
+      value={data}>
+     Add to cart
+    </Button>
+   </Tooltip>
+  </>
+ );
+};
 
 /**
  * AddedToCart
@@ -160,17 +167,29 @@ export const AddToCart = ({ product, cart }) => (
  * @param {*} { product }
  * @returns UI if product is Added To Cart
  */
-export const AddedToCart = ({ product, productAmount, cart }) => (
- <>
-  <Tooltip title="Added to cart">
-   <Badge badgeContent={productAmount} color="primary">
-    <Button color="success" onClick={() => cart.addToCart(product.id)} variant="contained">
-     Added to cart
-    </Button>
-   </Badge>
-  </Tooltip>
- </>
-);
+export const AddedToCart = ({ product, productAmount, cart }) => {
+ const [data = product, setCart = cart.addToCart] = useLocalStorage("Cart", cart);
+
+ return (
+  <>
+   <Tooltip title="Added to cart">
+    <Badge badgeContent={productAmount} color="primary">
+     <Button
+      color="success"
+      onClick={() => {
+       setCart(product.id);
+       cart.addToCart(product.id);
+      }}
+      variant="contained"
+      value={data}
+     >
+      Added to cart
+     </Button>
+    </Badge>
+   </Tooltip>
+  </>
+ );
+};
 
 /**
  * ProductCard
@@ -182,7 +201,6 @@ const ProductCard = ({ product }) => {
  // Setting up the cart function's
  const cart = useContext(CartContext);
  const productAmount = cart.getProductAmount(product.id);
-
  return (
   <Card
    sx={{
@@ -193,14 +211,12 @@ const ProductCard = ({ product }) => {
    key={product.id}
   >
    <Link to={`/product/${product.id}`} style={linkStyle}>
-    <div>{product.discountedPrice < product.price ? <SaleItem product={product} /> : <NonSaleItem product={product} />}</div>
+    {product.discountedPrice < product.price ? <SaleItem product={product} /> : <NonSaleItem product={product} />}
     <CardContent>
      <Typography gutterBottom variant="h5" component="div">
       {product.title}
      </Typography>
-     <Typography variant="body2" color="text.secondary">
-      {product.discountedPrice < product.price ? <Discount product={product} /> : <NoDiscount product={product} />}
-     </Typography>
+     {product.discountedPrice < product.price ? <Discount product={product} /> : <NoDiscount product={product} />}
     </CardContent>
    </Link>
    <CardActions>{productAmount > 0 ? <AddedToCart product={product} productAmount={productAmount} cart={cart} /> : <AddToCart product={product} cart={cart} />}</CardActions>

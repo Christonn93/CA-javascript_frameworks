@@ -1,6 +1,13 @@
 // Importing react elements
 import { useEffect, useState } from "react";
 
+/**
+ * Function to call a api to receive data
+ * @Creator Martin Kruger
+ * 
+ * @param url Needs a url for the endpoint of the api call you want to make
+ * @Return Returning data, loading area and error area.
+ */
 const ApiHook = (url) => {
  const [data, setData] = useState([]);
  const [isLoading, setIsLoading] = useState(false);

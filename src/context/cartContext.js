@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import ApiHook from "../api/ApiHooks";
 
 export const CartContext = createContext({
@@ -21,7 +21,6 @@ export function CartProvider({ children }) {
   if (quantity === undefined) {
    return 0;
   }
-
   return quantity;
  }
 
@@ -65,7 +64,7 @@ export function CartProvider({ children }) {
  function getTotalPrice() {
   let subTotal = 0;
   data.map((item) => {
-   subTotal += (item.discountedPrice * item.quantity);
+   subTotal += item.discountedPrice * item.quantity;
    return subTotal;
   });
   return subTotal;
