@@ -28,6 +28,7 @@ const SearchBar = ({ searchInput, setSearchInput, data }) => {
    <FormControl>
     <Autocomplete
      clearOnEscape
+     disableClearable
      id="searchBar"
      options={option}
      onChange={(event, value) => {
