@@ -3,7 +3,8 @@ import React from "react";
 
 // Importing mui items
 import { FormControl, TextField, Autocomplete } from "@mui/material";
-import { Link } from "react-router-dom";
+
+import SearchListItem from "./SearchListItem";
 
 /**
  * Search component
@@ -22,12 +23,6 @@ const SearchBar = ({ searchInput, setSearchInput, data }) => {
   return productItems;
  });
 
- const linkStyle = {
-  textDecoration: "none",
-  color: "black",
-  textTransform: "initial",
- };
-
  return (
   <form onSubmit={(e) => e.preventDefault()}>
    <FormControl>
@@ -35,17 +30,11 @@ const SearchBar = ({ searchInput, setSearchInput, data }) => {
      clearOnEscape
      id="searchBar"
      options={option}
-     sx={{ width: 300 }}
+     isOptionEqualToValue={(option, value) => option.label === value.label}
+     noOptionsText={"No match found"}
+     renderOption={(props, option) => <SearchListItem props={props} option={option} />}
+     sx={{ width: 400 }}
      value={searchInput}
-     renderOption={(props, option) => {
-      return (
-       <li {...props} key={option.id}>
-        <Link to={`/product/${option.id}`} style={linkStyle}>
-         {option.label}
-        </Link>
-       </li>
-      );
-     }}
      renderInput={(params) => <TextField {...params} fullWidth id="outlined-controlled" label="Search products" onChange={onSearch} clearOnEscape />}
     />
    </FormControl>
