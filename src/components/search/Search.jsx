@@ -30,6 +30,7 @@ const SearchBar = ({ searchInput, setSearchInput, data }) => {
      clearOnEscape
      id="searchBar"
      options={option}
+     onChange={(event, value) => setSearchInput(value)}
      isOptionEqualToValue={(option, value) => option.label === value.label}
      noOptionsText={"No match found"}
      renderOption={(props, option) => <SearchListItem props={props} option={option} />}
