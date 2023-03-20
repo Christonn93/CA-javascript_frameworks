@@ -7,12 +7,12 @@ import styled from "styled-components";
 import { Box, Grid, Button, ButtonGroup, Container, Paper } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-// Importing components
+// Importing utils// Importing utils
 import BasicBreadcrumbs from "../../utils/BreadCrumbs";
 import LoadingAnimation from "../../utils/LoadingAnimation";
 import ErrorResponse from "../../utils/ErrorResponse";
-import { AddToCart } from "../../components/card/ProductCard";
-import { AddedToCart } from "../../components/card/ProductCard";
+import AddToCart from "../../utils/ProductCard/AddToCart";
+import AddedToCart from "../../utils/ProductCard/AddedToCart";
 
 // Importing hook
 import ApiHook from "../../api/ApiHooks";

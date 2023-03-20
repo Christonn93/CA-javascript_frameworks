@@ -18,14 +18,14 @@ const SearchBar = ({ searchInput, setSearchInput, data }) => {
  }
 
  const option = data.map((e) => {
-  let productItems = { label: e.title.toLowerCase(), id: e.id, price: e.discountedPrice };
+  let productItems = { label: e.title, id: e.id, price: e.discountedPrice };
   return productItems;
  });
 
  const linkStyle = {
   textDecoration: "none",
   color: "black",
-  textTransform: "initial"
+  textTransform: "initial",
  };
 
  return (
