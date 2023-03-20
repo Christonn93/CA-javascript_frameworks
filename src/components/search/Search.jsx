@@ -19,7 +19,7 @@ const SearchBar = ({ searchInput, setSearchInput, data }) => {
  }
 
  const option = data.map((e) => {
-  let productItems = { label: e.title, id: e.id, price: e.discountedPrice };
+  let productItems = { label: e.title, id: e.id };
   return productItems;
  });
 
@@ -30,7 +30,13 @@ const SearchBar = ({ searchInput, setSearchInput, data }) => {
      clearOnEscape
      id="searchBar"
      options={option}
-     onChange={(event, value) => setSearchInput(value)}
+     onChange={(event, value) => {
+      if (value !== null) {
+       setSearchInput(value.label);
+      } else {
+       return;
+      }
+     }}
      isOptionEqualToValue={(option, value) => option.label === value.label}
      noOptionsText={"No match found"}
      renderOption={(props, option) => <SearchListItem props={props} option={option} />}
