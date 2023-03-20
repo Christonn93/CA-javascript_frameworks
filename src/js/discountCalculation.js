@@ -6,15 +6,9 @@
  */
 export const priceDiscount = (product) => {
  // Calculating discount price
- const fullPrice = Math.round(product.price);
- const reducedPrice = Math.round(product.discountedPrice);
+ const fullPrice = product.price;
+ const reducedPrice = product.discountedPrice;
  const discountPercentage = Math.round(((fullPrice - reducedPrice) / fullPrice) * 100);
-
- //  const discountPercentage = Math.trunc(100 * Math.abs((fullPrice - reducedPrice) / ((fullPrice + reducedPrice) / 2)));
-
- console.log("Full price:", Math.round(product.price));
- console.log("ReducedPrice:", Math.round(product.discountedPrice));
- console.log("Discount %:", discountPercentage);
 
  return discountPercentage;
 };

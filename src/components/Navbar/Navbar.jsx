@@ -18,7 +18,7 @@ import { CartContext } from "../../context/cartContext";
 
 // Styling company logo
 const CompanyLogo = styled.img`
- height: clamp(50px, 80px, 150px);
+ height: 150px;
 `;
 
 /**

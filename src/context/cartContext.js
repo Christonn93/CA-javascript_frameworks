@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import ApiHook from "../api/ApiHooks";
 
 export const CartContext = createContext({
@@ -11,8 +11,16 @@ export const CartContext = createContext({
 });
 
 export function CartProvider({ children }) {
- const [products, setProducts] = useState([]);
  const { data } = ApiHook("https://api.noroff.dev/api/v1/online-shop");
+
+ const [products, setProducts] = useState(() => {
+  const localData = localStorage.getItem("Products");
+  return localData ? JSON.parse(localData) : [];
+ });
+
+ useEffect(() => {
+  localStorage.setItem("Products", JSON.stringify(products));
+ }, [products]);
 
  // Getting product quantity added to cart
  function getProductAmount(id) {
