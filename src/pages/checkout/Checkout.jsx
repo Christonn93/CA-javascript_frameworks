@@ -11,7 +11,12 @@ const Print = {
 
 const Checkout = () => {
  return (
-  <Box sx={{ flexGrow: 1, margin: "20px auto" }}>
+  <Box
+   sx={{
+    flexGrow: 1,
+    margin: "12% auto",
+   }}
+  >
    <Container>
     <Alert variant="filled" severity="success" elevation={12}>
      <Stack spacing={1}>

@@ -40,8 +40,6 @@ const CartCard = ({ id }) => {
  const cart = useContext(CartContext);
  const productAmount = cart.getProductAmount(id);
 
- console.log(data);
-
  return (
   <Card
    sx={{
