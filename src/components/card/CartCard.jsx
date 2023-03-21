@@ -27,53 +27,59 @@ const ItemImage = styled.div`
 `;
 
 const pageHeader = {
-    margin: "0",
-    padding: "0",
-   };
+ margin: "0",
+ padding: "0",
+};
 
-   const red = {
-    color: "red",
-   };
+const red = {
+ color: "red",
+};
 
 const CartCard = ({ id }) => {
  const { data } = ApiHook(`https://api.noroff.dev/api/v1/online-shop/${id}`);
  const cart = useContext(CartContext);
  const productAmount = cart.getProductAmount(id);
 
+ console.log(data);
+
  return (
-  <Card sx={{ 
-    display: "flex", 
-    maxWidth: 1500,
-    maxHeight: "200" 
-    }}>
+  <Card
+   sx={{
+    display: "flex",
+    maxWidth: "1200",
+    height: "150",
+   }}
+  >
    <ItemImage>
     <img src={data.imageUrl} alt={data.title} loading={"lazy"} />
    </ItemImage>
    <Box sx={{ display: "flex", flexDirection: "column", flex: "1 1 auto", padding: "10px" }}>
-    <CardContent sx={{ display: "flex", justifyContent: "space-between"}}>
+    <CardContent sx={{ display: "flex", justifyContent: "space-between" }}>
      <h3 style={pageHeader}>{data.title}</h3>
      <IconButton variant="contained" color="error" onClick={() => cart.deleteFromCart(data.id)}>
-      <DeleteForeverIcon fontSize="small"/>
+      <DeleteForeverIcon fontSize="small" />
      </IconButton>
     </CardContent>
     <CardContent sx={{ display: "flex", flex: "1 1 auto" }}>
-    {data.price === data.discountedPrice ? (
+     {data.price === data.discountedPrice ? (
       <>
        <span>{data.price} NOK</span>
       </>
      ) : (
       <>
-       <span>{data.discountedPrice} NOK <del style={red}>{data.price} NOK</del></span>
+       <span>
+        {data.discountedPrice} NOK <del style={red}>{data.price} NOK</del>
+       </span>
       </>
      )}
     </CardContent>
     <Box sx={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "5px" }}>
-     <IconButton variant="contained" color="success" onClick={() => cart.addToCart(data.id)}>
-      <AddIcon fontSize="small"/>
+     <IconButton variant="contained" color="warning" onClick={() => cart.removeFromCart(data.id)}>
+      <RemoveIcon fontSize="small" />
      </IconButton>
      {productAmount}
-     <IconButton variant="contained" color="warning" onClick={() => cart.removeFromCart(data.id)}>
-      <RemoveIcon fontSize="small"/>
+     <IconButton variant="contained" color="success" onClick={() => cart.addToCart(data.id)}>
+      <AddIcon fontSize="small" />
      </IconButton>
     </Box>
    </Box>

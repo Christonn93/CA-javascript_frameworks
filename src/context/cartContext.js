@@ -8,6 +8,7 @@ export const CartContext = createContext({
  addToCart: () => {},
  removeFromCart: () => {},
  deleteFromCart: () => {},
+ clearCart: () => {},
 });
 
 export function CartProvider({ children }) {
@@ -78,6 +79,10 @@ export function CartProvider({ children }) {
   return subTotal;
  }
 
+ function clearCart() {
+  localStorage.removeItem("Products");
+ }
+
  const value = {
   items: products,
   getProductAmount,
@@ -85,6 +90,7 @@ export function CartProvider({ children }) {
   addToCart,
   removeFromCart,
   deleteFromCart,
+  clearCart,
  };
 
  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
