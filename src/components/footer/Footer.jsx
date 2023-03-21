@@ -1,13 +1,13 @@
 // Importing react
 import React from "react";
-
-// Importing MUI
-import { Box, Container } from "@mui/material";
-import CopyrightIcon from "@mui/icons-material/Copyright";
 import { Link } from "react-router-dom";
 
+// Importing MUI
+import { Box, Container, Grid, Stack } from "@mui/material";
+import CopyrightIcon from "@mui/icons-material/Copyright";
+
+// Importing Company Logo
 import Logo from "../../assets/images/color-noBG.png";
-import { Stack } from "@mui/system";
 
 // Adding some style
 const Inline = {
@@ -20,40 +20,43 @@ const LogoStyle = {
 };
 
 const StyledLink = {
-    color: "black",
-    textAlign: "start"
-}
+ color: "black",
+ textAlign: "start",
+};
 
+/**
+ *
+ * @returns
+ */
 const Footer = () => {
  const date = new Date();
  const year = date.getFullYear();
 
  return (
   <Box width={"100%"}>
-   <Container
-    align="center"
-    sx={{
-     display: "flex",
-     gap: "15px",
-     padding: "15px",
-     justifyContent: "space-between",
-     alignItems: "center"
-    }}
-   >
-    <div>
-     <Link to="/">
-      <img src={Logo} alt="Logo" style={LogoStyle} loading="lazy" />
-     </Link>
-    </div>
-    <div>
-     <p style={Inline}>
-      <CopyrightIcon /> Store Online, {year}
-     </p>
-    </div>
-    <Stack spacing={2}>
-     <Link to={"/contact"} style={StyledLink}>Contact</Link>
-     <Link to={"/privacy"} style={StyledLink}>Privacy Policy</Link>
-    </Stack>
+   <Container>
+    <Grid container spacing={2} columns={{ xs: 2, md: 12 }} rowSpacing={3} alignItems="center">
+     <Grid item xs alignItems="center" align="center" order={{ xs: 1, md: 1, lg: 1 }}>
+      <Link to="/">
+       <img src={Logo} alt="Logo" style={LogoStyle} loading="lazy" />
+      </Link>
+     </Grid>
+     <Grid item xs={6} alignItems="center" align="center" order={{ xs: 3, md: 3, lg: 2 }}>
+      <p style={Inline}>
+       <CopyrightIcon /> Store Online, {year}
+      </p>
+     </Grid>
+     <Grid item xs alignItems="center" align="center" order={{ xs: 2, md: 2, lg: 3 }}>
+      <Stack spacing={2} alignItems="center">
+       <Link to={"/contact"} style={StyledLink}>
+        Contact
+       </Link>
+       <Link to={"/privacy"} style={StyledLink}>
+        Privacy Policy
+       </Link>
+      </Stack>
+     </Grid>
+    </Grid>
    </Container>
   </Box>
  );
