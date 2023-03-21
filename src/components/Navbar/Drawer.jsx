@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { Button, Tooltip, IconButton, Drawer, List, ListItem, ListItemText, Badge} from "@mui/material";
+import { Button, Tooltip, IconButton, Drawer, List, ListItem, ListItemText, Badge, Box } from "@mui/material";
 import { Menu } from "@mui/icons-material";
 
 import CartIcon from "../../assets/CartIcon";
@@ -38,22 +38,24 @@ function DrawerComponent() {
        </Link>
       </ListItemText>
      </ListItem>
-     <ListItem onClick={() => setOpenDrawer(false)}>
-      <ListItemText>
-       <Link to="/cart">
-        <Tooltip title="Your cart">
-         <Badge badgeContent={cartTotal} color="primary">
-          <CartIcon />
-         </Badge>
-        </Tooltip>
-       </Link>
-      </ListItemText>
-     </ListItem>
     </List>
    </Drawer>
-   <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
-    <Menu />
-   </IconButton>
+   <Box sx={{
+    display: "flex",
+    gap: "20px"
+   }}>
+    <Link to="/cart">
+     <Tooltip title="Your cart">
+      <Badge badgeContent={cartTotal} color="primary">
+       <CartIcon />
+      </Badge>
+     </Tooltip>
+    </Link>
+
+    <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
+     <Menu />
+    </IconButton>
+   </Box>
   </>
  );
 }

@@ -26,13 +26,17 @@ const Home = () => {
  const [search, setSearch] = useState("");
  const { data } = ApiHook("https://api.noroff.dev/api/v1/online-shop");
  return (
-  <Container align="center">
+  <Container align="center" sx={{
+    margin: "20px auto",
+    padding: "15px"
+  }}>
    <Stack spacing={{ xs: 1, sm: 2, md: 4 }}>
     <Paper
      elevation={0}
      sx={{
       textAlign: "center",
       width: "100%",
+      padding: "15px"
      }}
     >
      <h1 style={pageHeader}>Welcome to Store Online</h1>
