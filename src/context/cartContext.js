@@ -12,8 +12,6 @@ export const CartContext = createContext({
 });
 
 export function CartProvider({ children }) {
- const { data } = ApiHook("https://api.noroff.dev/api/v1/online-shop");
-
  const [products, setProducts] = useState(() => {
   const localData = localStorage.getItem("Products");
   return localData ? JSON.parse(localData) : [];
@@ -70,11 +68,15 @@ export function CartProvider({ children }) {
   );
  }
 
- function getTotalPrice() {
+ function getTotalPrice({id}) {
+  const { data } = ApiHook("https://api.noroff.dev/api/v1/online-shop");
   let subTotal = 0;
-  data.map((item) => {
-   subTotal += item.discountedPrice * item.quantity;
-   return subTotal;
+  data.map((item, idx) => {
+   if (id !== item.id) {
+    console.log(item)
+    subTotal += item.discountedPrice * item.quantity;
+    return subTotal;
+   }
   });
   return subTotal;
  }

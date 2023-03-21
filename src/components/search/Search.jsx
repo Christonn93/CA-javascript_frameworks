@@ -27,7 +27,6 @@ const SearchBar = ({ searchInput, setSearchInput, data }) => {
   <form onSubmit={(e) => e.preventDefault()}>
    <FormControl>
     <Autocomplete
-     clearOnEscape
      disableClearable
      id="searchBar"
      options={option}
@@ -43,7 +42,7 @@ const SearchBar = ({ searchInput, setSearchInput, data }) => {
      renderOption={(props, option) => <SearchListItem props={props} option={option} />}
      sx={{ width: 300 }}
      value={searchInput}
-     renderInput={(params) => <TextField {...params} fullWidth id="outlined-controlled" label="Search products" onChange={onSearch} clearOnEscape />}
+     renderInput={(params) => <TextField {...params} fullWidth id="outlined-controlled" label="Search products" onChange={onSearch} />}
     />
    </FormControl>
   </form>
