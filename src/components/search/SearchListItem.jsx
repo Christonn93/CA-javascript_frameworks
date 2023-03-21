@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 // Importing mui items
 import { Button } from "@mui/material";
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 // Adding style
 const linkStyle = {
@@ -27,7 +28,7 @@ const SearchListItem = ({ props, option }) => {
   <li {...props} key={option.id} style={List}>
    <p style={P}>{option.label}</p>
    <Link to={`/product/${option.id}`} style={linkStyle}>
-    <Button variant="outlined">View Product</Button>
+    <Button variant="outlined">View <ArrowRightIcon fontSize="small"/></Button>
    </Link>
   </li>
  );

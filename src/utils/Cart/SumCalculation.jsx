@@ -1,6 +1,10 @@
-const SumCalculation = ({ product }) => {
+import ApiHook from "../../api/ApiHooks";
+
+const SumCalculation = ({ id }) => {
+ const { data } = ApiHook(`https://api.noroff.dev/api/v1/online-shop/${id}`);
+
  const allNum = [];
- const numbers = product.map((e) => e.discountedPrice);
+ const numbers = data.map((e) => e.discountedPrice);
 
  allNum.push(numbers);
  return allNum.reduce((a, b) => a + b);

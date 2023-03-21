@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 // Importing MUI
-import { Container, Stack } from "@mui/material";
+import { Container, Stack, Button, Divider } from "@mui/material";
 
 // Importing components
 import CartCard from "../../components/card/CartCard";
@@ -29,12 +29,12 @@ const Cart = () => {
        <CartCard id={product.id} />
       ))}
      </Stack>
-     <h3>
-      Total:{" "}
-      {cart.items.map((product) => {
-       return cart.getTotalPrice(product.id).toFixed(1);
-      })}
-     </h3>
+     <Divider />
+     <Stack>
+      <h3>Total: </h3>
+      <Divider />
+      <Button variant="contained">Purchases</Button>
+     </Stack>
     </Container>
    ) : (
     <Container>

@@ -41,7 +41,7 @@ const SearchBar = ({ searchInput, setSearchInput, data }) => {
      isOptionEqualToValue={(option, value) => option.label === value.label}
      noOptionsText={"No match found"}
      renderOption={(props, option) => <SearchListItem props={props} option={option} />}
-     sx={{ width: 400 }}
+     sx={{ width: 300 }}
      value={searchInput}
      renderInput={(params) => <TextField {...params} fullWidth id="outlined-controlled" label="Search products" onChange={onSearch} clearOnEscape />}
     />
