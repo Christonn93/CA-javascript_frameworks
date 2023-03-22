@@ -9,17 +9,15 @@ const Review = ({ data }) => {
  return (
   <>
    <Card key={id}>
-    <CardActionArea>
-     <CardContent>
-      <Rating name="read-only" value={rating} readOnly />
-      <Typography gutterBottom variant="h5" component="div">
-       {username}
-      </Typography>
-      <Typography variant="body2" color="text.secondary">
-       {description}
-      </Typography>
-     </CardContent>
-    </CardActionArea>
+    <CardContent>
+     <Rating name="read-only" value={rating} readOnly />
+     <Typography gutterBottom variant="h5" component="div">
+      {username}
+     </Typography>
+     <Typography variant="body2" color="text.secondary">
+      {description}
+     </Typography>
+    </CardContent>
    </Card>
   </>
  );
