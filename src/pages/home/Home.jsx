@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 // Importing mui items
-import { Container, Stack, Divider, Grid, Paper, Box } from "@mui/material";
+import { Container, Stack, Divider, Grid, Box } from "@mui/material";
 
 // Importing components
 import ProductCard from "../../components/card/ProductCard";
@@ -31,12 +31,12 @@ const Home = () => {
     padding: "15px"
   }}>
    <Stack spacing={{ xs: 1, sm: 2, md: 4 }}>
-    <Paper
+    <Box
      elevation={0}
      sx={{
       textAlign: "center",
       width: "100%",
-      padding: "15px"
+      padding: "15px",
      }}
     >
      <h1 style={pageHeader}>Welcome to Store Online</h1>
@@ -49,7 +49,7 @@ const Home = () => {
       customer service team is always ready to assist you with any questions or concerns you may have. So go ahead and browse our extensive selection of products, and treat yourself to something
       special today!
      </p>
-    </Paper>
+    </Box>
     <Divider />
      <h2 style={pageHeader}>Our products</h2>
      <SearchBar searchInput={search} setSearchInput={setSearch} data={data} />

@@ -16,6 +16,7 @@ import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 // Importing components
 import CartIcon from "../../assets/CartIcon";
 import Logo from "../../assets/images/color-noBG.png";
+import LogoDark from "../../assets/images/white-noBG.png";
 import DrawerComponent from "./Drawer";
 
 // Importing cart context
@@ -49,7 +50,7 @@ const Navbar = () => {
     <Grid container justifyContent={"space-between"} alignItems={"center"}>
      <Grid item>
       <Link to="/">
-       <CompanyLogo src={Logo} alt="Logo" loading="lazy" />
+      {theme.palette.mode === "dark" ? <CompanyLogo src={LogoDark} alt="Logo" loading="lazy" />: <CompanyLogo src={Logo} alt="Logo" loading="lazy" />}
       </Link>
      </Grid>
      <Grid item>

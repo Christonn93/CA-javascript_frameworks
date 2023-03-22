@@ -39,13 +39,14 @@ const ProductCard = ({ product }) => {
     maxWidth: 300,
     overflow: "visible",
     textAlign: "start",
+    backgroundColor: "whitesmoke"
    }}
    key={product.id}
   >
    <Link to={`/product/${product.id}`} style={linkStyle}>
     {product.discountedPrice < product.price ? <SaleItem product={product} /> : <NonSaleItem product={product} />}
     <CardContent>
-     <Typography gutterBottom variant="h5" component="div">
+     <Typography gutterBottom variant="h4" component="div">
       {product.title}
      </Typography>
      {product.discountedPrice < product.price ? <Discount product={product} /> : <NoDiscount product={product} />}
