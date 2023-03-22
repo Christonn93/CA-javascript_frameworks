@@ -3,11 +3,13 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-// Importing theme
+// Importing Color context
 import { ColorModeContext } from "../../layout/Theme";
 
 // Importing MUI components
 import { Toolbar, CssBaseline, Button, Tooltip, IconButton, useMediaQuery, useTheme, Box, Grid, Badge } from "@mui/material";
+
+// MUI Icons
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 

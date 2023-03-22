@@ -18,7 +18,13 @@ const ItemListing = ({ id }) => {
  const cart = useContext(CartContext);
  const productAmount = cart.getProductAmount(id);
  return (
-  <Grid container spacing={3}>
+  <Grid
+   container
+   spacing={3}
+   sx={{
+    justifyContent: "space-evenly",
+   }}
+  >
    <Grid item xs={5}>
     <span>{data.title}</span>
    </Grid>
