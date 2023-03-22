@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 // Importing MUI
-import { Stack, Box, Alert } from "@mui/material";
+import { Stack, Box, Alert, useTheme } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 
 // Importing components
@@ -13,13 +13,24 @@ import CartCard from "../../components/card/CartCard";
 import { CartContext } from "../../context/cartContext";
 import CartSummary from "../../components/Cart/CartSummary";
 
+// Setting some style
+const StyledLinkWhite = {
+ color: "white",
+ textAlign: "start",
+};
+
+const StyledLinkBlack = {
+ color: "black",
+ textAlign: "start",
+};
+
 const Cart = () => {
  // Getting the cart context
  const cart = useContext(CartContext);
+ const theme = useTheme();
 
  // Adding a new function to the CartContext
  const products = cart.items.reduce((sum, product) => sum + product.quantity, 0);
-
  return (
   <>
    <Box sx={{ flexGrow: 1, margin: "20px auto" }}>
@@ -34,7 +45,16 @@ const Cart = () => {
        </Stack>
       ) : (
        <Alert variant="outlined" severity="warning">
-        Your cart is empty! <Link to="/">Back to shop</Link>
+        Your cart is empty!{" "}
+        {theme.palette.mode === "dark" ? (
+         <Link to="/" style={StyledLinkWhite}>
+          Back to shop
+         </Link>
+        ) : (
+         <Link to="/" style={StyledLinkBlack}>
+          Back to shop
+         </Link>
+        )}
        </Alert>
       )}
      </Grid>

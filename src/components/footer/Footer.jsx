@@ -22,8 +22,13 @@ const CompanyLogo = styled.img`
  height: 150px;
 `;
 
-const StyledLink = {
+const StyledLinkWhite = {
  color: "white",
+ textAlign: "start",
+};
+
+const StyledLinkBlack = {
+ color: "black",
  textAlign: "start",
 };
 
@@ -49,13 +54,26 @@ const Footer = () => {
       </p>
      </Grid>
      <Grid item xs alignItems="center" align="center" order={{ xs: 2, md: 2, lg: 3 }}>
-      <Stack spacing={2} >
-       <Link to={"/contact"} style={StyledLink}>
-        Contact
-       </Link>
-       <Link to={"/privacy"} style={StyledLink}>
-        Privacy Policy
-       </Link>
+      <Stack spacing={2}>
+       {theme.palette.mode === "dark" ? (
+        <Link to={"/contact"} style={StyledLinkWhite}>
+         Contact
+        </Link>
+       ) : (
+        <Link to={"/contact"} style={StyledLinkBlack}>
+         Contact
+        </Link>
+       )}
+
+       {theme.palette.mode === "dark" ? (
+        <Link to={"/privacy"} style={StyledLinkWhite}>
+         Privacy Policy
+        </Link>
+       ) : (
+        <Link to={"/privacy"} style={StyledLinkBlack}>
+         Privacy Policy
+        </Link>
+       )}
       </Stack>
      </Grid>
     </Grid>
