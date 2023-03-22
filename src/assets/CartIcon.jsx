@@ -17,7 +17,7 @@ const CartIcon = (props) => {
  return (
   <IconButton aria-label="cart">
    <StyledBadge badgeContent={props.amount}>
-    <ShoppingCartIcon color="success" />
+    <ShoppingCartIcon color="secondary" />
    </StyledBadge>
   </IconButton>
  );

@@ -23,7 +23,7 @@ const CompanyLogo = styled.img`
 `;
 
 const StyledLink = {
- color: "black",
+ color: "white",
  textAlign: "start",
 };
 
@@ -49,7 +49,7 @@ const Footer = () => {
       </p>
      </Grid>
      <Grid item xs alignItems="center" align="center" order={{ xs: 2, md: 2, lg: 3 }}>
-      <Stack spacing={2} alignItems="center">
+      <Stack spacing={2} >
        <Link to={"/contact"} style={StyledLink}>
         Contact
        </Link>

@@ -6,8 +6,8 @@ import styled from "styled-components";
 import { Container } from "@mui/system";
 
 // Importing components
-import Footer from "../components/footer/Footer";
-import PageHeader from "../components/header/PageHeader";
+import Footer from "../components/Footer/Footer";
+import PageHeader from "../components/Header/PageHeader";
 
 const PageLayout = styled.div`
  display: grid;

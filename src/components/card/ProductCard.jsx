@@ -39,7 +39,7 @@ const ProductCard = ({ product }) => {
     maxWidth: 300,
     overflow: "visible",
     textAlign: "start",
-    backgroundColor: "whitesmoke"
+    backgroundColor: "whitesmoke",
    }}
    key={product.id}
   >
