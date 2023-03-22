@@ -133,9 +133,15 @@ const Product = () => {
           <h3>Reviews</h3>
          </Grid>
          <Grid item xs={12}>
-          {data.reviews.map((e) => {
-           return <Review data={e} />;
-          })}
+          <Grid container direction="column" spacing={2} rowSpacing={2}>
+           {data.reviews.map((e) => {
+            return (
+             <Grid item xs={12} key={e.id}>
+              <Review data={e} />
+             </Grid>
+            );
+           })}
+          </Grid>
          </Grid>
         </Grid>
        </Grid>

@@ -1,15 +1,26 @@
 import React from "react";
 
-const Review = ({data}) => {
+// Importing mui items
+import { Card, CardActionArea, Typography, CardContent, Rating } from "@mui/material";
+
+const Review = ({ data }) => {
  const { id, username, description, rating } = data;
 
  return (
   <>
-   <div key={id}>
-    <h4>{username}</h4>
-    <p>{description}</p>
-    <p>{rating}</p>
-   </div>
+   <Card key={id}>
+    <CardActionArea>
+     <CardContent>
+      <Rating name="read-only" value={rating} readOnly />
+      <Typography gutterBottom variant="h5" component="div">
+       {username}
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+       {description}
+      </Typography>
+     </CardContent>
+    </CardActionArea>
+   </Card>
   </>
  );
 };
