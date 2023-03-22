@@ -6,7 +6,7 @@ import ItemListing from "./ItemListing";
 
 const CartSummary = ({ id, cart }) => {
  const products = cart.items.reduce((sum, product) => sum + product.quantity, 0);
-
+ cart.getTotalPrice(products)
  return (
   <Box>
    <h2>Order summary</h2>

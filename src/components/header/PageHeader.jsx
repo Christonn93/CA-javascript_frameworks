@@ -9,7 +9,7 @@ import Navbar from "../Navbar/Navbar";
 
 const PageHeader = () => {
  return (
-  <Box width={"100%"}>
+  <Box width={"100%"} >
    <Container>
     <Navbar />
    </Container>

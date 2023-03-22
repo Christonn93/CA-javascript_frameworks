@@ -3,10 +3,13 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+// Importing theme
+import { ColorModeContext } from "../../layout/Theme";
+
 // Importing MUI components
 import { Toolbar, CssBaseline, Button, Tooltip, IconButton, useMediaQuery, useTheme, Box, Grid, Badge } from "@mui/material";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 
 // Importing components
 import CartIcon from "../../assets/CartIcon";
@@ -27,12 +30,15 @@ const CompanyLogo = styled.img`
  * @returns page navigation
  */
 const Navbar = () => {
+ const theme = useTheme();
+ const colorMode = useContext(ColorModeContext);
  const cart = useContext(CartContext);
  const device = useTheme();
  const isMobile = useMediaQuery(device.breakpoints.down("md"));
 
  // Adding a new function to the CartContext
  const cartTotal = cart.items.reduce((sum, product) => sum + product.quantity, 0);
+
 
  return (
   <Box width={"100%"}>
@@ -51,25 +57,23 @@ const Navbar = () => {
        <>
         <Link to="/">
          <Tooltip title="Home">
-          <Button variant="text">Home</Button>
+          <Button variant="text" color="secondary">Home</Button>
          </Tooltip>
         </Link>
         <Link to="/contact">
          <Tooltip title="Contact us">
-          <Button variant="text">Contact</Button>
+          <Button variant="text" color="secondary">Contact</Button>
          </Tooltip>
         </Link>
 
         <Link to="/cart">
          <Tooltip title="Your cart">
-          <Badge badgeContent={cartTotal} color="primary">
+          <Badge badgeContent={cartTotal} color="secondary">
            <CartIcon />
           </Badge>
          </Tooltip>
         </Link>
-        <IconButton sx={{ ml: 1 }} color="inherit">
-         {device.palette.mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
-        </IconButton>
+        <IconButton onClick={colorMode.toggleColorMode}>{theme.palette.mode === "dark" ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />}</IconButton>
        </>
       )}
      </Grid>
