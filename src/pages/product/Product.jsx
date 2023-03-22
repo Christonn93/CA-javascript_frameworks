@@ -19,6 +19,7 @@ import ApiHook from "../../api/ApiHooks";
 
 // Importing cart context
 import { CartContext } from "../../context/cartContext";
+import Review from "../../components/Product/Review";
 
 // Styled component
 const Line = styled.hr`
@@ -41,6 +42,8 @@ const red = {
 const Product = () => {
  let { id } = useParams();
  const { data, isLoading, isError } = ApiHook(`https://api.noroff.dev/api/v1/online-shop/${id}`);
+
+ // console.log(data)
 
  // Setting up the cart function's
  const cart = useContext(CartContext);
@@ -129,7 +132,11 @@ const Product = () => {
          <Grid item xs={12}>
           <h3>Reviews</h3>
          </Grid>
-         <Grid item xs={12}></Grid>
+         <Grid item xs={12}>
+          {data.reviews.map((e) => {
+           return <Review data={e} />;
+          })}
+         </Grid>
         </Grid>
        </Grid>
       </Box>

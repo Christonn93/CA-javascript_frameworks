@@ -10,6 +10,8 @@ import SearchBar from "../../components/search/Search";
 
 // Importing api call to get products
 import ApiHook from "../../api/ApiHooks";
+import Loading from "../../components/Loading/Loading";
+import ErrorResponse from "../../utils/ErrorResponse";
 
 const pageHeader = {
  margin: "0",
@@ -24,7 +26,12 @@ const pageHeader = {
  */
 const Home = () => {
  const [search, setSearch] = useState("");
- const { data } = ApiHook("https://api.noroff.dev/api/v1/online-shop");
+ const { data, isLoading, isError } = ApiHook("https://api.noroff.dev/api/v1/online-shop");
+
+ if (isError) {
+  return <ErrorResponse severity="error" title="Oh NO!" content="Obs. We could not load your data. Please try again later" />;
+ }
+
  return (
   <Container align="center" sx={{
     margin: "20px auto",
@@ -61,7 +68,12 @@ const Home = () => {
        })
        .map((product) => (
         <Grid item xs={2} sm={4} md={4} key={product.id}>
+        {isLoading
+        ?
+        <Loading /> 
+        :
          <ProductCard product={product} />
+        }
         </Grid>
        ))}
      </Grid>
