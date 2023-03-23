@@ -2,11 +2,10 @@ import React from "react";
 
 import { Box, Divider, Stack, Alert, Paper } from "@mui/material";
 import CheckOutButton from "./CheckOutButton";
-import ItemListing, { itemPrice } from "./ItemListing";
+import ItemListing from "./ItemListing";
 
 const CartSummary = ({ id, cart }) => {
  const products = cart.items.reduce((sum, product) => sum + product.quantity, 0);
- const productAmount = cart.getProductAmount(id);
 
  const total = () => {
   return "I give up on this one";
