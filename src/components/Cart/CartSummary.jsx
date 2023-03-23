@@ -2,10 +2,17 @@ import React from "react";
 
 import { Box, Divider, Stack, Alert, Paper } from "@mui/material";
 import CheckOutButton from "./CheckOutButton";
-import ItemListing from "./ItemListing";
+import ItemListing, { itemPrice } from "./ItemListing";
 
 const CartSummary = ({ id, cart }) => {
  const products = cart.items.reduce((sum, product) => sum + product.quantity, 0);
+ const productAmount = cart.getProductAmount(id);
+
+ const total = () => {
+  return "I give up on this one";
+ };
+
+ const vat = 25;
 
  const SummaryInfoPara = {
   margin: 0,
@@ -44,9 +51,18 @@ const CartSummary = ({ id, cart }) => {
       marginBottom: 2,
      }}
     >
-     <p style={SummaryInfoPara}>Product cost:</p>
-     <p style={SummaryInfoPara}>VAT:</p>
-     <p style={SummaryInfoPara}>Total cost: </p>
+     <Stack direction="row" spacing={1} justifyContent="space-between">
+      <p style={SummaryInfoPara}>Product cost: </p>
+      <p>{total()}</p>
+     </Stack>
+     <Stack direction="row" spacing={1} justifyContent="space-between">
+      <p style={SummaryInfoPara}>VAT:</p>
+      <p>{vat} %</p>
+     </Stack>
+     <Stack direction="row" spacing={1} justifyContent="space-between">
+      <p style={SummaryInfoPara}>Total cost</p>
+      <p>{total * vat}</p>
+     </Stack>
     </Box>
     <Divider />
     <CheckOutButton cart={cart} />
