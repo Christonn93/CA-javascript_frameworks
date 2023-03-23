@@ -10,6 +10,8 @@ import App from "./App";
 // Importing MUI
 import { CssBaseline } from "@mui/material";
 
+/// Importing style 
+import './index.css'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

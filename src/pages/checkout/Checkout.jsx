@@ -18,7 +18,7 @@ const Checkout = () => {
    }}
   >
    <Container>
-    <Alert variant="filled" severity="success" elevation={12}>
+    <Alert variant="standard" severity="success" elevation={12}>
      <Stack spacing={1}>
       <h1>Checkout success</h1>
       <p>Your items is on the way!</p>
