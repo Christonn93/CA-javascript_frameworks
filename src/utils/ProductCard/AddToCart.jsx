@@ -15,7 +15,7 @@ const AddToCart = ({ product, cart }) => {
   <>
    <Tooltip title="Add to cart">
     <Button
-     color="primary"
+     color="cta"
      onClick={() => {
       cart.addToCart(product.id);
      }}

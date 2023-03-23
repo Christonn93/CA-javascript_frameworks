@@ -1,7 +1,7 @@
 import React from "react";
 
 // Importing mui items
-import { Card, CardActionArea, Typography, CardContent, Rating } from "@mui/material";
+import { Card, Typography, CardContent, Rating } from "@mui/material";
 
 const Review = ({ data }) => {
  const { id, username, description, rating } = data;

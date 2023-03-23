@@ -13,7 +13,7 @@ const AddedToCart = ({ product, productAmount, cart }) => {
  return (
   <>
    <Tooltip title="Added to cart">
-    <Badge badgeContent={productAmount} color="primary">
+    <Badge badgeContent={productAmount} color="secondary">
      <Button
       color="success"
       onClick={() => {
