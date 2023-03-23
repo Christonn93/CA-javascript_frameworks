@@ -2,7 +2,6 @@ import { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext({
  items: [],
- getProductsArray: () => {},
  getProductAmount: () => {},
  getTotalPrice: () => {},
  addToCart: () => {},
@@ -12,16 +11,6 @@ export const CartContext = createContext({
 });
 
 export function CartProvider({ children }) {
- // Setting products in localStorage
- const [productsArray, setProductsArray] = useState(() => {
-  const localData = localStorage.getItem("Products Array");
-  return localData ? JSON.parse(localData) : [];
- });
-
- useEffect(() => {
-  localStorage.setItem("Products Array", JSON.stringify(productsArray));
- }, [productsArray]);
-
  // Setting cart products in localStorage
  const [products, setProducts] = useState(() => {
   const localData = localStorage.getItem("Products");
@@ -43,7 +32,7 @@ export function CartProvider({ children }) {
  }
 
  // Function to items add to cart
- function addToCart(id) {
+ function addToCart(id, price) {
   const quantity = getProductAmount(id);
 
   // Checking if the cart already have the item in cart
@@ -52,6 +41,7 @@ export function CartProvider({ children }) {
     ...products,
     {
      id: id,
+     price: price,
      quantity: 1,
     },
    ]);
@@ -79,16 +69,10 @@ export function CartProvider({ children }) {
   );
  }
 
- function getTotalPrice() {}
-
- function getProductsArray(data) {
-  const { title, id, discountedPrice } = data;
-
-  setProductsArray({
-   id: id,
-   title: title,
-   price: discountedPrice,
-  });
+ function getTotalPrice() {
+    products.map((e) => {
+        return console.log(e)
+    })
  }
 
  function clearCart() {
@@ -97,7 +81,6 @@ export function CartProvider({ children }) {
 
  const value = {
   items: products,
-  getProductsArray,
   getProductAmount,
   getTotalPrice,
   addToCart,

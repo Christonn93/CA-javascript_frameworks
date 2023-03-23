@@ -17,7 +17,7 @@ const AddToCart = ({ product, cart }) => {
     <Button
      color="cta"
      onClick={() => {
-      cart.addToCart(product.id);
+      cart.addToCart(product.id, product.discountedPrice);
      }}
      variant="contained"
     >

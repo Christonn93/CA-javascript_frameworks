@@ -8,7 +8,7 @@ const CartSummary = ({ id, cart }) => {
  const products = cart.items.reduce((sum, product) => sum + product.quantity, 0);
 
  const total = () => {
-  return "I give up on this one";
+  return cart.getTotalPrice();
  };
 
  const vat = 25;
