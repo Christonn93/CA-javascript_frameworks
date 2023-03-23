@@ -18,6 +18,8 @@ const ItemListing = ({ id }) => {
  const cart = useContext(CartContext);
  const productAmount = cart.getProductAmount(id);
 
+ const price = calculation(data.discountedPrice, productAmount).toFixed(2);
+
  return (
   <Grid
    container
@@ -33,7 +35,7 @@ const ItemListing = ({ id }) => {
     <span>{productAmount}</span>
    </Grid>
    <Grid item xs={5}>
-    <span>{calculation(data.discountedPrice, productAmount).toFixed(2)} ,-</span>
+    <span>{price} ,-</span>
    </Grid>
   </Grid>
  );

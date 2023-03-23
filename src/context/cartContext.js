@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect } from "react";
-import ApiHook from "../api/ApiHooks";
 
 export const CartContext = createContext({
  items: [],
+ getProductsArray: () => {},
  getProductAmount: () => {},
  getTotalPrice: () => {},
  addToCart: () => {},
@@ -12,6 +12,17 @@ export const CartContext = createContext({
 });
 
 export function CartProvider({ children }) {
+ // Setting products in localStorage
+ const [productsArray, setProductsArray] = useState(() => {
+  const localData = localStorage.getItem("Products Array");
+  return localData ? JSON.parse(localData) : [];
+ });
+
+ useEffect(() => {
+  localStorage.setItem("Products Array", JSON.stringify(productsArray));
+ }, [productsArray]);
+
+ // Setting cart products in localStorage
  const [products, setProducts] = useState(() => {
   const localData = localStorage.getItem("Products");
   return localData ? JSON.parse(localData) : [];
@@ -68,22 +79,16 @@ export function CartProvider({ children }) {
   );
  }
 
- function getTotalPrice() {
-  const { data } = ApiHook(`https://api.noroff.dev/api/v1/online-shop/`);
-  const cartItems = localStorage.getItem("Products");
-  const cartItemsParsed = JSON.parse(cartItems);
+ function getTotalPrice() {}
 
-  const cartDataId = cartItemsParsed.flatMap((obj) => obj.id);
-  //   console.log("cart", cartDataId);
+ function getProductsArray(data) {
+  const { title, id, discountedPrice } = data;
 
-  const fetchDataId = data.flatMap((obj) => obj.id);
-  //   console.log("Fetched", fetchDataId);
-
-  for (let i = 0; i < cartDataId.length; i++) {
-   if (cartDataId[i].id !== fetchDataId) {
-    return;
-   }
-  }
+  setProductsArray({
+   id: id,
+   title: title,
+   price: discountedPrice,
+  });
  }
 
  function clearCart() {
@@ -92,6 +97,7 @@ export function CartProvider({ children }) {
 
  const value = {
   items: products,
+  getProductsArray,
   getProductAmount,
   getTotalPrice,
   addToCart,

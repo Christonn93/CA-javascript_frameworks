@@ -15,7 +15,7 @@ import ErrorResponse from "../../utils/ErrorResponse";
 
 const pageHeader = {
  margin: "0",
- padding: "0"
+ padding: "0",
 };
 
 /**
@@ -33,10 +33,13 @@ const Home = () => {
  }
 
  return (
-  <Container align="center" sx={{
+  <Container
+   align="center"
+   sx={{
     margin: "20px auto",
-    padding: "15px"
-  }}>
+    padding: "15px",
+   }}
+  >
    <Stack spacing={{ xs: 1, sm: 2, md: 4 }}>
     <Box
      elevation={0}
@@ -58,8 +61,8 @@ const Home = () => {
      </p>
     </Box>
     <Divider />
-     <h2 style={pageHeader}>Our products</h2>
-     <SearchBar searchInput={search} setSearchInput={setSearch} data={data} />
+    <h2 style={pageHeader}>Our products</h2>
+    <SearchBar searchInput={search} setSearchInput={setSearch} data={data} />
     <Box sx={{ flexGrow: 1 }}>
      <Grid container spacing={2} columns={{ xs: 2, md: 12 }} rowSpacing={3} justifyContent={{ xs: "center", md: "start" }} alignItems="center">
       {data
@@ -68,12 +71,7 @@ const Home = () => {
        })
        .map((product) => (
         <Grid item xs={2} sm={4} md={4} key={product.id}>
-        {isLoading
-        ?
-        <Loading /> 
-        :
-         <ProductCard product={product} />
-        }
+         {isLoading ? <Loading /> : <ProductCard product={product} />}
         </Grid>
        ))}
      </Grid>

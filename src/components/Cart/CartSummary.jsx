@@ -28,9 +28,9 @@ const CartSummary = ({ id, cart }) => {
        marginBottom: 2,
       }}
      >
-      {cart.items.map((product, idx) => (
-       <ItemListing id={product.id} key={product.id} />
-      ))}
+      {cart.items.map((product, idx) => {
+       return <ItemListing id={product.id} key={product.id} />;
+      })}
      </Stack>
     ) : (
      <Alert variant="outlined" severity="warning">

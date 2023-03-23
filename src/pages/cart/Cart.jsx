@@ -31,7 +31,6 @@ const Cart = () => {
 
  // Adding a new function to the CartContext
  const products = cart.items.reduce((sum, product) => sum + product.quantity, 0);
-cart.getTotalPrice();
 
  return (
   <>
@@ -41,9 +40,9 @@ cart.getTotalPrice();
       <h2>Your products</h2>
       {products > 0 ? (
        <Stack spacing={2}>
-        {cart.items.map((product, idx) => (
-         <CartCard id={product.id} key={product.id} />
-        ))}
+        {cart.items.map((product, idx) => {
+         return <CartCard id={product.id} key={product.id} />;
+        })}
        </Stack>
       ) : (
        <Alert variant="outlined" severity="warning">
