@@ -31,6 +31,11 @@ const Cart = () => {
 
  // Adding a new function to the CartContext
  const products = cart.items.reduce((sum, product) => sum + product.quantity, 0);
+
+ const forLogging = cart.getTotalPrice(products);
+
+ console.log(forLogging);
+
  return (
   <>
    <Box sx={{ flexGrow: 1, margin: "20px auto" }}>

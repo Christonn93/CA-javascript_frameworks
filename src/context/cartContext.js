@@ -68,12 +68,18 @@ export function CartProvider({ children }) {
   );
  }
 
- function getTotalPrice(cart) {
-  const cartItem = cart.items;
-  const item = cartItem.map((e) => ApiHook(`https://api.noroff.dev/api/v1/online-shop/${e.id}`));
-  console.log(item);
+ function getTotalPrice() {
+  const cartItems = localStorage.getItem("Products");
+  const cartItemsParsed = JSON.parse(cartItems);
+  const id = cartItemsParsed.id;
+  const priceArray = [];
+
+  const {data} = ApiHook(`https://api.noroff.dev/api/v1/online-shop/${id}`);
+
+  console.log(data);
  }
 
+ 
  function clearCart() {
   localStorage.removeItem("Products");
  }

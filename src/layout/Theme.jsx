@@ -166,6 +166,12 @@ export const themeSettings = (mode) => {
        background: {
         default: "#253f58",
        },
+       text: {
+        primary: "#fff",
+       },
+       navText: {
+        main: colors.greenAccent[500],
+       },
       }
     : {
        primary: {
@@ -184,6 +190,12 @@ export const themeSettings = (mode) => {
        },
        background: {
         default: "#fcfcfc",
+       },
+       text: {
+        primary: "#000",
+       },
+       navText: {
+        main: "#000",
        },
       }),
   },

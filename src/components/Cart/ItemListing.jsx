@@ -17,6 +17,7 @@ const ItemListing = ({ id }) => {
  const { data } = ApiHook(`https://api.noroff.dev/api/v1/online-shop/${id}`);
  const cart = useContext(CartContext);
  const productAmount = cart.getProductAmount(id);
+
  return (
   <Grid
    container
