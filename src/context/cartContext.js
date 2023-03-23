@@ -68,14 +68,10 @@ export function CartProvider({ children }) {
   );
  }
 
- function getTotalPrice() {
-  const { data } = ApiHook(`https://api.noroff.dev/api/v1/online-shop/`);
-
-  let subTotal = 0;
-  data.map((item, idx) => {
-   return (subTotal += item.discountedPrice * item.quantity);
-  });
-  return subTotal;
+ function getTotalPrice(cart) {
+  const cartItem = cart.items;
+  const item = cartItem.map((e) => ApiHook(`https://api.noroff.dev/api/v1/online-shop/${e.id}`));
+  console.log(item);
  }
 
  function clearCart() {
