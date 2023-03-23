@@ -31,10 +31,7 @@ const Cart = () => {
 
  // Adding a new function to the CartContext
  const products = cart.items.reduce((sum, product) => sum + product.quantity, 0);
-
- const forLogging = cart.getTotalPrice(products);
-
- console.log(forLogging);
+cart.getTotalPrice();
 
  return (
   <>

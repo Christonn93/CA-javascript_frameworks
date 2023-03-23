@@ -69,17 +69,23 @@ export function CartProvider({ children }) {
  }
 
  function getTotalPrice() {
+  const { data } = ApiHook(`https://api.noroff.dev/api/v1/online-shop/`);
   const cartItems = localStorage.getItem("Products");
   const cartItemsParsed = JSON.parse(cartItems);
-  const id = cartItemsParsed.id;
-  const priceArray = [];
 
-  const {data} = ApiHook(`https://api.noroff.dev/api/v1/online-shop/${id}`);
+  const cartDataId = cartItemsParsed.flatMap((obj) => obj.id);
+  //   console.log("cart", cartDataId);
 
-  console.log(data);
+  const fetchDataId = data.flatMap((obj) => obj.id);
+  //   console.log("Fetched", fetchDataId);
+
+  for (let i = 0; i < cartDataId.length; i++) {
+   if (cartDataId[i].id !== fetchDataId) {
+    return;
+   }
+  }
  }
 
- 
  function clearCart() {
   localStorage.removeItem("Products");
  }
