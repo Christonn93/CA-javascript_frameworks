@@ -3,11 +3,12 @@ import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
 // Importing MUI
-import { Container } from "@mui/material";
+import { Container, useTheme, useMediaQuery } from "@mui/material";
 
 // Importing components
 import Footer from "../components/footer/Footer";
 import PageHeader from "../components/header/PageHeader";
+import MobileNavigation from "../components/Navbar/MobileNavigation";
 
 const PageLayout = styled.div`
  display: grid;
@@ -16,6 +17,9 @@ const PageLayout = styled.div`
 `;
 
 const Layout = () => {
+    const device = useTheme();
+    const isMobile = useMediaQuery(device.breakpoints.down("md"));
+
  return (
   <PageLayout>
    <PageHeader />
@@ -26,6 +30,10 @@ const Layout = () => {
     <Outlet />
    </Container>
    <Footer />
+   {isMobile 
+   ? <MobileNavigation />
+   : <></>
+   }
   </PageLayout>
  );
 };
