@@ -7,7 +7,7 @@ const CartIcon = (props) => {
  return (
   <IconButton aria-label="cart">
    <Badge badgeContent={props.amount} color="secondary">
-    <ShoppingCartIcon color="secondary" />
+    <ShoppingCartIcon color="secondary" value={props.amount}/>
    </Badge>
   </IconButton>
  );
