@@ -81,7 +81,7 @@ export function CartProvider({ children }) {
  }
 
  function clearCart() {
-  localStorage.removeItem("Products");
+  localStorage.setItem("Products", []);
  }
 
  const value = {
