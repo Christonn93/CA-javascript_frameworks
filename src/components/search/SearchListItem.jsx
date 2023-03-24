@@ -23,7 +23,7 @@ const List = {
  justifyContent: "space-between",
 };
 
-const SearchListItem = ({ props, option, key }) => {
+const SearchListItem = ({ props, option }) => {
  return (
   <li {...props} key={option.id} style={List}>
    <p style={P}>{option.label}</p>

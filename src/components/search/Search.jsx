@@ -59,7 +59,11 @@ const SearchBar = ({ searchInput, setSearchInput, data }) => {
       // Regular option
       return option.label;
      }}
-     renderOption={(props, option) => <SearchListItem props={props} option={option} />}
+     renderOption={(props, option) => (
+      <React.Fragment key={option.id}>
+       <SearchListItem props={props} option={option} />
+      </React.Fragment>
+     )}
      renderInput={(params) => (
       <TextField
        {...params}
