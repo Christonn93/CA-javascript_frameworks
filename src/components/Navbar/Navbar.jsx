@@ -17,7 +17,6 @@ import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import CartIcon from "../../assets/CartIcon";
 import Logo from "../../assets/images/color-noBG.png";
 import LogoDark from "../../assets/images/white-noBG.png";
-import DrawerComponent from "./Drawer";
 
 // Importing cart context
 import { CartContext } from "../../context/cartContext";
