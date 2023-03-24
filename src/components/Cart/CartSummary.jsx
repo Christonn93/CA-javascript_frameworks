@@ -8,10 +8,30 @@ const CartSummary = ({ id, cart }) => {
  const products = cart.items.reduce((sum, product) => sum + product.quantity, 0);
 
  const total = () => {
-  return cart.getTotalPrice();
+  return cart.getTotalPrice().toFixed(2);
  };
 
- const vat = 25;
+ /**
+  * Found this function online.
+  * It calculates the tax rate on the products
+  *
+  * @Creator https://makersaid.com/how-to-calculate-tax-with-javascript/
+  *
+  * @returns
+  */
+ const cartTotal = () => {
+  // Set cart value (in our case, $49.99)
+  let cartValue = cart.getTotalPrice();
+  // Set tax rate (in our case, 7%)
+  let taxRate = 25;
+
+  // Calculate final price
+  let finalPrice = cartValue * (1 + taxRate / 100);
+  let roundedFinalPrice = +finalPrice.toFixed(2);
+  return roundedFinalPrice;
+ };
+
+ const taxRate = 0.25;
 
  const SummaryInfoPara = {
   margin: 0,
@@ -52,15 +72,15 @@ const CartSummary = ({ id, cart }) => {
     >
      <Stack direction="row" spacing={1} justifyContent="space-between">
       <p style={SummaryInfoPara}>Product cost: </p>
-      <p>{total()}</p>
+      <p>{total()} ,-</p>
      </Stack>
      <Stack direction="row" spacing={1} justifyContent="space-between">
       <p style={SummaryInfoPara}>VAT:</p>
-      <p>{vat} %</p>
+      <p>{taxRate} %</p>
      </Stack>
      <Stack direction="row" spacing={1} justifyContent="space-between">
       <p style={SummaryInfoPara}>Total cost</p>
-      <p>{total * vat}</p>
+      <p>{cartTotal()} ,-</p>
      </Stack>
     </Box>
     <Divider />

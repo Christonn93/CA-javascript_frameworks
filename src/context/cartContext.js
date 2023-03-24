@@ -70,9 +70,14 @@ export function CartProvider({ children }) {
  }
 
  function getTotalPrice() {
-    products.map((e) => {
-        return console.log(e)
-    })
+  const array = [];
+  products.map((e) => {
+   return array.push(e);
+  });
+
+  return array.reduce((sum, { quantity, price }) => {
+   return sum + quantity * price;
+  }, 0);
  }
 
  function clearCart() {

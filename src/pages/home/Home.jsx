@@ -37,7 +37,6 @@ const Home = () => {
    align="center"
    sx={{
     margin: "20px auto",
-    padding: "15px",
    }}
   >
    <Stack spacing={{ xs: 1, sm: 2, md: 4 }}>

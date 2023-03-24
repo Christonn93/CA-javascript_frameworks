@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
 // Importing MUI
-import { Container } from "@mui/system";
+import { Box } from "@mui/system";
 
 // Importing components
 import Footer from "../components/footer/Footer";
@@ -19,12 +19,12 @@ const Layout = () => {
  return (
   <PageLayout>
    <PageHeader />
-   <Container sx={{
+   <Box sx={{
     mt: 2,
     mb: 2
    }}>
     <Outlet />
-   </Container>
+   </Box>
    <Footer />
   </PageLayout>
  );
