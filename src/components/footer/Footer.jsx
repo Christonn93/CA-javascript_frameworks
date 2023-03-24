@@ -19,7 +19,9 @@ const Inline = {
 
 // Styling company logo
 const CompanyLogo = styled.img`
- height: 150px;
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
 `;
 
 const StyledLinkWhite = {
