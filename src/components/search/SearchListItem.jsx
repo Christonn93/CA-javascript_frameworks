@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 // Importing mui items
 import { Button } from "@mui/material";
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 
 // Adding style
 const linkStyle = {
@@ -23,12 +23,14 @@ const List = {
  justifyContent: "space-between",
 };
 
-const SearchListItem = ({ props, option }) => {
+const SearchListItem = ({ props, option, key }) => {
  return (
   <li {...props} key={option.id} style={List}>
    <p style={P}>{option.label}</p>
    <Link to={`/product/${option.id}`} style={linkStyle}>
-    <Button variant="outlined">View <ArrowRightIcon fontSize="small"/></Button>
+    <Button variant="outlined" color="secondary">
+     View <ArrowRightIcon fontSize="small" />
+    </Button>
    </Link>
   </li>
  );

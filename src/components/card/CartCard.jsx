@@ -17,13 +17,8 @@ import ApiHook from "../../api/ApiHooks";
 import { CartContext } from "../../context/cartContext";
 
 const ItemImage = styled.div`
- height: 200px;
- width: 200px;
-
- img {
-  width: 100%;
-  height: 100%;
- }
+ max-height: 200px;
+ max-width: 200px;
 `;
 
 const pageHeader = {

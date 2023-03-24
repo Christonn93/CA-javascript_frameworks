@@ -227,7 +227,6 @@ export const themeSettings = (mode) => {
     fontSize: 14,
    },
   },
-
  };
 };
 

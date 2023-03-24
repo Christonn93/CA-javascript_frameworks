@@ -4,6 +4,7 @@ import React from "react";
 // Importing mui items
 import { FormControl, TextField, Autocomplete } from "@mui/material";
 
+// Importing components
 import SearchListItem from "./SearchListItem";
 
 /**
@@ -14,10 +15,6 @@ import SearchListItem from "./SearchListItem";
  * @returns User search results will display
  */
 const SearchBar = ({ searchInput, setSearchInput, data }) => {
- function onSearch(e) {
-  setSearchInput(e.target.value);
- }
-
  const option = data.map((e) => {
   let productItems = { label: e.title, id: e.id };
   return productItems;
@@ -27,22 +24,52 @@ const SearchBar = ({ searchInput, setSearchInput, data }) => {
   <form onSubmit={(e) => e.preventDefault()}>
    <FormControl>
     <Autocomplete
+     selectOnFocus
+     clearOnBlur
+     handleHomeEndKeys
      disableClearable
-     id="searchBar"
+     freeSolo
+     sx={{ width: 240 }}
+     id="SearchBar"
      options={option}
-     onChange={(event, value) => {
-      if (value !== null) {
-       setSearchInput(value.label);
-      } else {
+     noOptionsText={"No match found"}
+     value={searchInput}
+     onChange={(event, newValue) => {
+      if (newValue === null) {
        return;
       }
+      if (typeof newValue === "string") {
+       setSearchInput(newValue.label);
+      } else if (newValue && newValue.inputValue) {
+       // Create a new value from the user input
+       setSearchInput(newValue.label);
+      } else {
+       setSearchInput(newValue.label);
+      }
      }}
-     isOptionEqualToValue={(option, value) => option.label === value.label}
-     noOptionsText={"No match found"}
+     getOptionLabel={(option) => {
+      // Value selected with enter, right from the input
+      if (typeof option === "string") {
+       return option;
+      }
+      // Add "xxx" option created dynamically
+      if (option.label) {
+       return option.label;
+      }
+      // Regular option
+      return option.label;
+     }}
      renderOption={(props, option) => <SearchListItem props={props} option={option} />}
-     sx={{ width: 300 }}
-     value={searchInput}
-     renderInput={(params) => <TextField {...params} fullWidth id="outlined-controlled" label="Search products" onChange={onSearch} />}
+     renderInput={(params) => (
+      <TextField
+       {...params}
+       id="outlined-controlled"
+       label="Search products"
+       onChange={(e) => {
+        setSearchInput(e.target.value);
+       }}
+      />
+     )}
     />
    </FormControl>
   </form>

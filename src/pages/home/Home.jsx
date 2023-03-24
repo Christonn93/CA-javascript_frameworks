@@ -33,10 +33,12 @@ const Home = () => {
  }
 
  return (
+  <>
   <Container
    align="center"
    sx={{
     margin: "20px auto",
+    maxWidth: "100%"
    }}
   >
    <Stack spacing={{ xs: 1, sm: 2, md: 4 }}>
@@ -77,6 +79,8 @@ const Home = () => {
     </Box>
    </Stack>
   </Container>
+  </>
+
  );
 };
 

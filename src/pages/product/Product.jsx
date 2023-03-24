@@ -122,7 +122,7 @@ const Product = () => {
        <Grid item xs={6} order={{ xs: 2, md: 2 }}>
         <Grid container direction="column" spacing={2} alignContent="center">
          <Grid item>
-          <img src={data.imageUrl} alt={data.imageUrl} loading="lazy" width={"300px"} className="product-image" />
+          <img src={data.imageUrl} alt={data.imageUrl} loading="lazy" className="product-image" />
          </Grid>
         </Grid>
        </Grid>
