@@ -1,7 +1,10 @@
 // Importing react
-import { Container, Alert, Stack, Button, Box } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
+
+import { Stack, Button, Box } from "@mui/material";
+
+import SuccessFeedback from "../../components/Feedback/SuccessFeedback";
 
 const Print = {
  color: "Orange",
@@ -17,10 +20,10 @@ const Checkout = () => {
     margin: "12% auto",
    }}
   >
-   <Container>
-    <Alert variant="standard" severity="success" elevation={12}>
+   <SuccessFeedback
+    title={<h1>Checkout success</h1>}
+    body={
      <Stack spacing={1}>
-      <h1>Checkout success</h1>
       <p>Your items is on the way!</p>
       <p>We hope that you will be happy with you order</p>
       <p>
@@ -37,15 +40,17 @@ const Checkout = () => {
        </span>
       </p>
      </Stack>
-     <Box sx={{ mt: 5 }}>
-      <Link to="/">
-       <Button variant="contained" color="info">
-        Back to home page
-       </Button>
-      </Link>
-     </Box>
-    </Alert>
-   </Container>
+    }
+    link={
+     <Link to="/">
+      <Button variant="contained" color="info">
+       Back to home page
+      </Button>
+     </Link>
+    }
+    option={null}
+    elevation={3}
+   />
   </Box>
  );
 };
