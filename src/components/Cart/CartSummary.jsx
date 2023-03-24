@@ -84,7 +84,7 @@ const CartSummary = ({ id, cart }) => {
      </Stack>
     </Box>
     <Divider />
-    <CheckOutButton cart={cart} />
+    {cart.items <= 1 ? <CheckOutButton cart={cart} state={false} /> : <CheckOutButton cart={cart} />}
    </Box>
   </Paper>
  );

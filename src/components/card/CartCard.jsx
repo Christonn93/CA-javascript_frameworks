@@ -44,7 +44,6 @@ const CartCard = ({ id }) => {
   <Card
    sx={{
     display: "flex",
-    maxWidth: "1200",
     height: "150",
    }}
   >
