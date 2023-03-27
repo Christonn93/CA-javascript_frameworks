@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 
 // Importing mui items
-import { Card, Box, CardContent, IconButton } from "@mui/material";
+import { Card, CardMedia, Box, CardContent, IconButton } from "@mui/material";
 
 // Importing mui icons
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
@@ -16,11 +16,13 @@ import ApiHook from "../../api/ApiHooks";
 // Importing cart context
 import { CartContext } from "../../context/cartContext";
 
+// Adding style
 const ItemImage = styled.div`
- max-height: 200px;
- max-width: 200px;
+ img {
+  width: 100%;
+  object-fit: cover;
+ }
 `;
-
 const pageHeader = {
  margin: "0",
  padding: "0",
@@ -42,9 +44,7 @@ const CartCard = ({ id }) => {
     height: "150",
    }}
   >
-   <ItemImage>
-    <img src={data.imageUrl} alt={data.title} loading={"lazy"} />
-   </ItemImage>
+   <CardMedia component="img" image={data.imageUrl} alt={data.title} sx={{ width: 200 }} />
    <Box sx={{ display: "flex", flexDirection: "column", flex: "1 1 auto", padding: "10px" }}>
     <CardContent sx={{ display: "flex", justifyContent: "space-between" }}>
      <h3 style={pageHeader}>{data.title}</h3>

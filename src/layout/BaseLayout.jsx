@@ -6,8 +6,8 @@ import styled from "styled-components";
 import { Container, useTheme, useMediaQuery } from "@mui/material";
 
 // Importing components
-import Footer from "../components/footer/Footer";
-import PageHeader from "../components/header/PageHeader";
+import Footer from "../components/Footer/Footer";
+import PageHeader from "../components/Header/PageHeader";
 import MobileNavigation from "../components/Navbar/MobileNavigation";
 
 const PageLayout = styled.div`

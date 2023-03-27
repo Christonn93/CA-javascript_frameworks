@@ -1,7 +1,7 @@
 // Importing react
 import React, { useContext } from "react";
 
-import { Stack, Divider } from "@mui/material";
+import { Stack, Divider, Grid } from "@mui/material";
 
 // Importing fetch function
 import ApiHook from "../../api/ApiHooks";
@@ -25,11 +25,19 @@ const ItemListing = ({ id }) => {
  const price = itemPrice(data, productAmount);
 
  return (
-  <Stack direction="row" justifyContent="space-between"       divider={<Divider orientation="vertical" flexItem color="red"/>}>
-   <div>{data.title}</div>
-   <div>{productAmount}</div>
-   <div>{price} ,-</div>
-  </Stack>
+  <>
+   <Grid container spacing={4} justifyContent="space-between">
+    <Grid item xs={5}>
+     {data.title}
+    </Grid>
+    <Grid item xs={3} textAlign="center">
+     {productAmount}
+    </Grid>
+    <Grid item xs={4} textAlign="end">
+     {price} ,-
+    </Grid>
+   </Grid>
+  </>
  );
 };
 

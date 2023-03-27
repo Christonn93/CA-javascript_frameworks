@@ -5,8 +5,9 @@ import React, { useState } from "react";
 import { Container, Stack, Divider, Grid, Box } from "@mui/material";
 
 // Importing components
-import ProductCard from "../../components/card/ProductCard";
-import SearchBar from "../../components/search/Search";
+import ProductCard from "../../components/Card/ProductCard";
+import SearchBar from "../../components/Search/Search";
+import { updateHead } from "../../js/headUpdater";
 
 // Importing api call to get products
 import ApiHook from "../../api/ApiHooks";
@@ -18,6 +19,9 @@ const pageHeader = {
  padding: "0",
 };
 
+
+
+
 /**
  * Home.
  * This function is rendering content that will display in the home page of the site.
@@ -27,6 +31,8 @@ const pageHeader = {
 const Home = () => {
  const [search, setSearch] = useState("");
  const { data, isLoading, isError } = ApiHook("https://api.noroff.dev/api/v1/online-shop");
+
+ updateHead("Home", "Store Online home page. We offer a range of items that will suite your needs");
 
  if (isError) {
   return <ErrorResponse severity="error" title="Oh NO!" content="Obs. We could not load your data. Please try again later" />;

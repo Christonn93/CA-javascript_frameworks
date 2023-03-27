@@ -7,7 +7,8 @@ import { Stack, Box, Alert, useTheme } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 
 // Importing components
-import CartCard from "../../components/card/CartCard";
+import CartCard from "../../components/Card/CartCard";
+import BasicBreadcrumbs from "../../utils/BreadCrumbs";
 
 // Importing cart context
 import { CartContext } from "../../context/cartContext";
@@ -34,10 +35,13 @@ const Cart = () => {
 
  return (
   <>
-   <Box sx={{ flexGrow: 1, margin: "20px auto" }}>
-    <Grid container spacing={4} columns={{ xs: 2, md: 12 }} rowSpacing={3}>
-     <Grid xs={8}>
-      <h2>Your products</h2>
+  <BasicBreadcrumbs title="Cart" page="Cart" description="Store online Cart summary"/>
+   <Box sx={{ flexGrow: 1, marginBottom: 3 }}>
+    <Grid container spacing={5}>
+     <Grid item xs={12}>
+      <h1>Your cart</h1>
+     </Grid>
+     <Grid item xs={8}>
       {products > 0 ? (
        <Stack spacing={2}>
         {cart.items.map((product, idx) => {
@@ -59,7 +63,7 @@ const Cart = () => {
        </Alert>
       )}
      </Grid>
-     <Grid xs={4}>
+     <Grid item xs={4}>
       <CartSummary id={products.id} cart={cart} />
      </Grid>
     </Grid>

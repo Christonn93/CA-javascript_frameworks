@@ -9,11 +9,11 @@ import { ThemeProvider } from "@mui/material";
 import Layout from "./layout/BaseLayout";
 
 // Importing pages
-import Home from "./pages/home/Home";
-import Contact from "./pages/contact/Contact";
-import Product from "./pages/product/Product";
-import Cart from "./pages/cart/Cart";
-import Checkout from "./pages/checkout/Checkout";
+import Home from "./pages/Home/Home";
+import Contact from "./pages/Contact/Contact";
+import Product from "./pages/Product/Product";
+import Cart from "./pages/Cart/Cart";
+import Checkout from "./pages/Checkout/Checkout";
 import Privacy from "./pages/Privacy/Privacy";
 import NotFound from "./pages/404/404";
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Divider, Stack, Alert, Paper } from "@mui/material";
+import { Box, Divider, Stack, Alert, Paper, Grid } from "@mui/material";
 import CheckOutButton from "./CheckOutButton";
 import ItemListing from "./ItemListing";
 
@@ -54,6 +54,18 @@ const CartSummary = ({ id, cart }) => {
        marginBottom: 2,
       }}
      >
+      <Grid container spacing={4} justifyContent="space-between">
+       <Grid item xs={5}>
+        Product Title
+       </Grid>
+       <Grid item xs={3} textAlign="center">
+        Amount
+       </Grid>
+       <Grid item xs={4} textAlign="center">
+        Price
+       </Grid>
+      </Grid>
+      <Divider sx={{ marginBottom: 2 }} />
       {cart.items.map((product, idx) => {
        return <ItemListing id={product.id} key={product.id} />;
       })}
