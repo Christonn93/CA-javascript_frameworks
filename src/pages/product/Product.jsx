@@ -130,7 +130,7 @@ const Product = () => {
          <Grid item xs={12}>
           <Grid container direction="column" spacing={2} rowSpacing={2}>
            {data.reviews.map((e) => {
-            if (e !== null) {
+            if (e !== null) { 
              return (
               <Grid item xs={12} key={e.id}>
                <Review data={e} />
